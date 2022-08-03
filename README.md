@@ -12,9 +12,9 @@
 
 ## Puntos del Ecommerce
 
-- ⭕ El usuario puede crear una cuenta e iniciar sesión.
-- ⭕ El usuario puede ver todos los productos y filtrarlos por categorías
-- ⭕ El usuario puede buscar productos por nombre
-- ⭕ El usuario tiene un carrito de compra
-- ⭕ El usuario puede agragar productos a un carrito de compras
-- ⭕ El usuario puede realizar una orden de compra
+- [ ] El usuario puede crear una cuenta e iniciar sesión.
+- [ ] El usuario puede ver todos los productos y filtrarlos por categorías
+- [ ] El usuario puede buscar productos por nombre
+- [ ] El usuario tiene un carrito de compra
+- [ ] El usuario puede agragar productos a un carrito de compras
+- [ ] El usuario puede realizar una orden de compra
