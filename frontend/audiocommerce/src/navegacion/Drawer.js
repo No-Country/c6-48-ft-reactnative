@@ -1,13 +1,17 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Text } from 'react-native';
-import  Icon  from 'react-native-vector-icons/Ionicons';
+import { HeaderApp } from '../components/header/HeaderApp';
 
 const Drawer = createDrawerNavigator();
 
 export const MenuDrawer=()=> {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      screenOptions={{
+        header:(props)=><HeaderApp {...props}/>
+      }}
+    >
       <Drawer.Screen name="Headphone" component={Headphone} />
       <Drawer.Screen name="Speakers" component={Speakers} />
       <Drawer.Screen name="Earphone" component={Earphone} />
@@ -17,7 +21,7 @@ export const MenuDrawer=()=> {
 
 const Headphone = ()=>{
     return(
-      <Icon name='cart-outline' size={40} color='black' />
+     <Text>Headphone</Text>
     )
 }
 const Earphone = ()=>{
