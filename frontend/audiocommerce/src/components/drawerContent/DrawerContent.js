@@ -1,10 +1,8 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, TouchableOpacity } from 'react-native'
+import { DrawerContentScrollView } from '@react-navigation/drawer'
 import { ImageIcon } from './ImageIcon';
-import { useNavigationState } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export const DrawerContent = ({ navigation, state }) => {
     return (
