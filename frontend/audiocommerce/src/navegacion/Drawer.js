@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Text } from 'react-native';
+import  Icon  from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();
 
@@ -16,7 +17,7 @@ export const MenuDrawer=()=> {
 
 const Headphone = ()=>{
     return(
-        <Text>Headphone</Text>
+      <Icon name='cart-outline' size={40} color='black' />
     )
 }
 const Earphone = ()=>{
