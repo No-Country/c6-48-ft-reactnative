@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { themeApp } from '../../themeApp/themeApp';
 
 export const HeaderApp = ({ navigation }) => {
 
@@ -15,7 +16,7 @@ export const HeaderApp = ({ navigation }) => {
                     <TouchableOpacity
                         onPress={() => navigation.toggleDrawer()}
                     >
-                        <Icon name='menu-outline' size={40} color='white' />
+                        <Icon name='menu-outline' size={40} color={themeApp.colorWhite} />
                     </TouchableOpacity>
                 </View>
                 <Text
@@ -24,7 +25,7 @@ export const HeaderApp = ({ navigation }) => {
                 <View>
                     <TouchableOpacity
                     >
-                        <Icon name='cart-outline' size={40} color='white' />
+                        <Icon name='cart-outline' size={40} color={themeApp.colorWhite}/>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -35,7 +36,7 @@ export const HeaderApp = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     headerContainer: {
-        backgroundColor: '#101010',
+        backgroundColor: themeApp.colorBlack,
         alignItems: 'center',
     },
     header: {
