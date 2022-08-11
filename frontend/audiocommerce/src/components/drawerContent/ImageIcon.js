@@ -8,7 +8,7 @@ export const ImageIcon = ({iconUrl}) => {
                 style={ styles.image }
             />
             <Image
-                source={require('../../assets/img/sombra.png')}
+                source={require('../../assets/img/menu/sombra.png')}
                 style={ styles.sombra }
             />
         </>

@@ -15,23 +15,23 @@ export const DrawerContent = ({ navigation, state }) => {
 
                         switch (name) {
                             case 'Headphones':
-                                iconUrl = require('../../assets/img/menu-headphone.png');
+                                iconUrl = require('../../assets/img/menu/menu-headphone.png');
                                 break;
                             case 'Speakers':
-                                iconUrl = require('../../assets/img/menu-speakers.png');
+                                iconUrl = require('../../assets/img/menu/menu-speakers.png');
                                 break;
                             case 'Earphones':
-                                iconUrl = require('../../assets/img/menu-earphones.png');
+                                iconUrl = require('../../assets/img/menu/menu-earphones.png');
                                 break;
                             case 'Home':
-                                iconUrl = require('../../assets/img/menu-home.png');
+                                iconUrl = require('../../assets/img/menu/menu-home.png');
                                 break;
                             case 'Checkout':
-                                iconUrl = require('../../assets/img/menu-checkout.png');
+                                iconUrl = require('../../assets/img/menu/menu-checkout.png');
                                 break;
 
                             default:
-                                iconUrl = require('../../assets/img/menu-headphone.png')
+                                iconUrl = require('../../assets/img/menu/menu-headphone.png')
                                 break;
                         }
 
