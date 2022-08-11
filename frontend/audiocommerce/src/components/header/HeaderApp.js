@@ -8,26 +8,31 @@ export const HeaderApp = ({ navigation }) => {
     return (
         <View
             style={styles.headerContainer}>
+            <View style={styles.containerMenuButton}>
+                <TouchableOpacity
+                    onPress={() => navigation.toggleDrawer()}
+                >
+                    <Icon name='menu-outline' size={30} color={ themeApp.colorWhite } />
+                </TouchableOpacity>
+            </View>
             <View
-                style={styles.header}
+                style={styles.containerHeader}
             >
 
-                <View>
-                    <TouchableOpacity
-                        onPress={() => navigation.toggleDrawer()}
-                    >
-                        <Icon name='menu-outline' size={40} color={themeApp.colorWhite} />
-                    </TouchableOpacity>
-                </View>
                 <Text
                     style={styles.headerText}
                 >AudioCommerce</Text>
-                <View>
-                    <TouchableOpacity
-                    >
-                        <Icon name='cart-outline' size={40} color={themeApp.colorWhite}/>
-                    </TouchableOpacity>
-                </View>
+            </View>
+            <View style={ styles.containerHomeCart } >
+
+                <TouchableOpacity
+                >
+                    <Icon name='home-outline' size={26} color={ themeApp.colorWhite } />
+                </TouchableOpacity>
+                <TouchableOpacity
+                >
+                    <Icon name='cart-outline' size={30} color={ themeApp.colorWhite } />
+                </TouchableOpacity>
             </View>
 
         </View>
@@ -38,23 +43,31 @@ const styles = StyleSheet.create({
     headerContainer: {
         backgroundColor: themeApp.colorBlack,
         alignItems: 'center',
-    },
-    header: {
-        width: '100%',
-        height: 90,
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center'
+        justifyContent: 'space-between',
     },
-    screenTitle: {
-        textTransform: 'uppercase',
-        fontSize: 30,
-        fontWeight: '400'
+    containerHeader: {
+        height: 90,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     headerText: {
         color: 'white',
         fontSize: 30,
         paddingTop: 8,
         fontWeight: '300'
+    },
+    containerMenuButton:{
+        flex:1,
+        paddingLeft: 10
+    },
+    containerHomeCart:{
+        flex:1,
+        flexDirection:'row',
+        justifyContent:'space-evenly',
+        alignItems:'center',
+        width:100,
+        marginLeft:0,
+        paddingRight:10
     }
 })
