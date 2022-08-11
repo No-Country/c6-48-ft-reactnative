@@ -11,7 +11,6 @@ export const DrawerContent = ({ navigation, state }) => {
             <View>
                 {
                     state.routes.map(({ key, name }) => {
-
                         let iconUrl;
 
                         switch (name) {
@@ -23,6 +22,9 @@ export const DrawerContent = ({ navigation, state }) => {
                                 break;
                             case 'Earphone':
                                 iconUrl = require('../../assets/img/menu-earphones.png');
+                                break;
+                            case 'Home':
+                                iconUrl = require('../../assets/img/menu-home.png');
                                 break;
 
                             default:
@@ -42,7 +44,7 @@ export const DrawerContent = ({ navigation, state }) => {
                                     <View style={styles.containerText}>
                                         <Text style={styles.routeName}>{name}</Text>
                                         <Text style={styles.textShop}>
-                                            SHOP
+                                            {(name==='Home')? 'GO' : 'SHOP'}
                                             <Icon name='chevron-forward-outline' size={16} color={themeApp.colorPrimary} />
                                         </Text>
                                     </View>

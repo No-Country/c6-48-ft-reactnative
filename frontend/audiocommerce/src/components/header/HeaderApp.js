@@ -26,6 +26,7 @@ export const HeaderApp = ({ navigation }) => {
             <View style={ styles.containerHomeCart } >
 
                 <TouchableOpacity
+                onPress={()=>navigation.navigate('Home')}
                 >
                     <Icon name='home-outline' size={26} color={ themeApp.colorWhite } />
                 </TouchableOpacity>
