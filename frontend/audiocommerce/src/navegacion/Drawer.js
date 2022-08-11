@@ -25,6 +25,7 @@ export const MenuDrawer = () => {
 			<Drawer.Screen name="Headphone" component={Headphone} />
 			<Drawer.Screen name="Speakers" component={Speakers} />
 			<Drawer.Screen name="Earphone" component={Earphone} />
+			<Drawer.Screen name="Home" component={Home} />
 		</Drawer.Navigator>
 	);
 }
@@ -42,5 +43,10 @@ const Earphone = () => {
 const Speakers = () => {
 	return (
 		<Text>Speakers</Text>
+	)
+}
+const Home = () => {
+	return (
+		<Text>Home</Text>
 	)
 }
