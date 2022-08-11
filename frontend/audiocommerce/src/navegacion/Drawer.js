@@ -22,22 +22,23 @@ export const MenuDrawer = () => {
 			}}
 			drawerContent={(props)=><DrawerContent {...props}/>}
 		>
-			<Drawer.Screen name="Headphone" component={Headphone} />
+			<Drawer.Screen name="Headphones" component={Headphones} />
 			<Drawer.Screen name="Speakers" component={Speakers} />
-			<Drawer.Screen name="Earphone" component={Earphone} />
+			<Drawer.Screen name="Earphones" component={Earphones} />
 			<Drawer.Screen name="Home" component={Home} />
+			<Drawer.Screen name="Checkout" component={Checkout} />
 		</Drawer.Navigator>
 	);
 }
 
-const Headphone = () => {
+const Headphones = () => {
 	return (
-		<Text>Headphone</Text>
+		<Text>Headphones</Text>
 	)
 }
-const Earphone = () => {
+const Earphones = () => {
 	return (
-		<Text>Earphone</Text>
+		<Text>Earphones</Text>
 	)
 }
 const Speakers = () => {
@@ -48,5 +49,10 @@ const Speakers = () => {
 const Home = () => {
 	return (
 		<Text>Home</Text>
+	)
+}
+const Checkout = () => {
+	return (
+		<Text>Checkout</Text>
 	)
 }

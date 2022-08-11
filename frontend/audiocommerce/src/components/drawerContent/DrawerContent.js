@@ -8,23 +8,26 @@ import { themeApp } from '../../themeApp/themeApp';
 export const DrawerContent = ({ navigation, state }) => {
     return (
         <DrawerContentScrollView >
-            <View>
+            <View style={{paddingBottom: 50}}>
                 {
                     state.routes.map(({ key, name }) => {
                         let iconUrl;
 
                         switch (name) {
-                            case 'Headphone':
+                            case 'Headphones':
                                 iconUrl = require('../../assets/img/menu-headphone.png');
                                 break;
                             case 'Speakers':
                                 iconUrl = require('../../assets/img/menu-speakers.png');
                                 break;
-                            case 'Earphone':
+                            case 'Earphones':
                                 iconUrl = require('../../assets/img/menu-earphones.png');
                                 break;
                             case 'Home':
                                 iconUrl = require('../../assets/img/menu-home.png');
+                                break;
+                            case 'Checkout':
+                                iconUrl = require('../../assets/img/menu-checkout.png');
                                 break;
 
                             default:
@@ -67,7 +70,7 @@ const styles = StyleSheet.create({
         backgroundColor: themeApp.colorSecundary,
         borderRadius: 10,
         height: 200,
-        width: 455,
+        width: 440,
         alignItems: 'center',
         justifyContent: 'center'
     },
