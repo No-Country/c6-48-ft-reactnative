@@ -13,7 +13,7 @@ const UsuarioSchema = Schema({
         require: [true, 'The email is required'],
         unique: true
     },
-    phoneNumbre: {
+    phoneNumber: {
         type: String,
         require: [true, 'The phone number is required']
     },

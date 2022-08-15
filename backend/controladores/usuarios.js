@@ -1,4 +1,5 @@
 const { response } = require('express');
+const Usuario = require('../models/usuario');
 
 
 const getUsuarios = (req, res = response) => {
@@ -9,10 +10,15 @@ const getUsuarios = (req, res = response) => {
     })
 }
 
-const postUsuarios = (req, res = response) => {
+const postUsuarios = async (req, res = response) => {
+
+    const usuario = new Usuario( req.body );
+
+    await usuario.save();
+
     res.json({
         msg: 'oka desde el controlador POST',
-        body: req.body
+        usuario
 
     })
 }
@@ -21,7 +27,7 @@ const putUsuarios = (req, res = response) => {
         msg: 'oka desde el controlador PUT'
     })
 }
-const deleteUsuarios = (req, res = response) => {
+const deleteUsuarios = (req, res = response) => {  
     res.json({
         msg: 'oka desde el controlador DELETE',
         params: req.params
