@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Text } from 'react-native';
+import { Button, ScrollView, Text } from 'react-native';
 import { DrawerContent, HeaderApp } from '../components';
+import { ProductContext } from '../context/productContext/ProductContext';
 
 const Drawer = createDrawerNavigator();
 
@@ -33,8 +34,23 @@ export const MenuDrawer = () => {
 
 const Headphones = () => {
 
+	const context = useContext(ProductContext)
+
+	
 	return (
-		<Text>Headphones</Text>
+		<ScrollView>
+		<Text>
+			{
+				JSON.stringify(context, null , 4 )
+			}
+
+		</Text>
+		<Button 
+		title='Add products'
+		onPress={()=> context.addProducts()}
+		/>
+		</ScrollView>
+
 	)
 }
 const Earphones = () => {

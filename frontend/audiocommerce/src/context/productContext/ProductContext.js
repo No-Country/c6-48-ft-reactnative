@@ -1,4 +1,6 @@
-import React, { createContext } from "react";
+import React, { createContext, useReducer } from "react";
+import { data } from "../../api/data";
+import { productReducer } from "./productReducer";
 
 
 /* definir que informacion tendra el context
@@ -27,11 +29,18 @@ export const ProductContext = createContext({});
 
 export const ProductProvider = ({ children }) => {
 
+    const [productState, dispatch] = useReducer( productReducer,{
+        products:[],
+        cart:[]
+    })
+
+    const addProducts = ()=>{
+        dispatch({type:'addProducts', payload: data})
+    }
 
     const value = {
-        products:{},
-        cart: [],
-
+        productState,
+        addProducts,
     }
 
     return (
