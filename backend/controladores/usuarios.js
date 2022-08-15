@@ -4,11 +4,24 @@ const bcryptjs = require('bcryptjs');
 const Usuario = require('../models/usuario');
 
 
-const getUsuarios = (req, res = response) => {
+const getUsuarios = async (req, res = response) => {
+    const { limite = 5, desde = 0 } = req.query;
+    // const usuarios = await Usuario.find({ state: true })
+    //     .skip(Number(desde))
+    //     .limit(Number(limite))
 
+    // const totales = await Usuario.countDocuments({ state: true })
+
+    const [totales, usuarios] = await Promise.all([
+        Usuario.countDocuments({ state: true }),
+        Usuario.find({ state: true })
+            .skip(Number(desde))
+            .limit(Number(limite))
+    ])
 
     res.json({
-        msg: 'oka desde el controlador GET',
+        totales,
+        usuarios
     })
 }
 
@@ -59,7 +72,7 @@ const putUsuarios = async (req, res = response) => {
 
     const { id } = req.params;
 
-    const { password, google, correo, ...rest } = req.body;
+    const { _id, password, google, correo, ...rest } = req.body;
     //validar contra base de datos
 
     if (password) {

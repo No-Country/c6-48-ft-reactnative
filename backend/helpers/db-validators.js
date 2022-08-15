@@ -21,7 +21,18 @@ const emailExist = async ( email = '' )=>{
     }
 }
 
+const userExistByID = async ( id = '' )=>{
+    
+    const userExist = await Usuario.findById({_id:id});
+
+    if( !userExist ){
+        throw new Error(`The user ${id} not exist`)
+
+    }
+}
+
 module.exports = {
     roleValidator,
-    emailExist
+    emailExist,
+    userExistByID
 }
