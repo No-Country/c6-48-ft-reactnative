@@ -5,12 +5,9 @@ const Usuario = require('../models/usuario');
 
 
 const getUsuarios = async (req, res = response) => {
-    const { limite = 5, desde = 0 } = req.query;
-    // const usuarios = await Usuario.find({ state: true })
-    //     .skip(Number(desde))
-    //     .limit(Number(limite))
 
-    // const totales = await Usuario.countDocuments({ state: true })
+    const { limite = 5, desde = 0 } = req.query;
+
 
     const [totales, usuarios] = await Promise.all([
         Usuario.countDocuments({ state: true }),
@@ -68,6 +65,7 @@ const postUsuarios = async (req, res = response) => {
 
     })
 }
+
 const putUsuarios = async (req, res = response) => {
 
     const { id } = req.params;
@@ -89,10 +87,20 @@ const putUsuarios = async (req, res = response) => {
         usuario
     })
 }
-const deleteUsuarios = (req, res = response) => {
+
+const deleteUsuarios = async(req, res = response) => {
+
+    const {id} = req.params;
+
+    //borrar fisicamente
+    // const usuario = await Usuario.findByIdAndDelete( id );
+
+    const usuario = await Usuario.findByIdAndUpdate(id, {state: false})
+
+
     res.json({
         msg: 'oka desde el controlador DELETE',
-        params: req.params
+        usuario
     })
 }
 

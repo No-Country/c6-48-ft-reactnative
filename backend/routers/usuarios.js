@@ -34,7 +34,12 @@ router.put('/:id', [
     check('rol').custom(roleValidator),
     validarCampos,
 ], putUsuarios)
-router.delete('/:id', deleteUsuarios)
+
+router.delete('/:id',[
+    check('id', 'This is not valid ID').isMongoId(),
+    check('id').custom(userExistByID),
+    validarCampos
+], deleteUsuarios)
 
 
 module.exports = router;
