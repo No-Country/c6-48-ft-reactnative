@@ -32,6 +32,7 @@ export const MenuDrawer = () => {
 }
 
 const Headphones = () => {
+
 	return (
 		<Text>Headphones</Text>
 	)
