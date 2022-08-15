@@ -27,7 +27,8 @@ router.post('/', [
     check('email').custom( emailExist ),
     validarCampos
 ],postUsuarios )
-router.put('/', putUsuarios )
+
+router.put('/:id', putUsuarios )
 router.delete('/:id',deleteUsuarios )
 
 
