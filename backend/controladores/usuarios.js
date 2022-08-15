@@ -13,6 +13,7 @@ const getUsuarios = (req, res = response) => {
 }
 
 const postUsuarios = async (req, res = response) => {
+
     const { name,
         email,
         phoneNumber,
@@ -39,6 +40,13 @@ const postUsuarios = async (req, res = response) => {
     });
     //Verificar si existe el correo
 
+    const existeEmail = await Usuario.findOne({email});
+
+    if( existeEmail ){
+        return res.status(400).json({
+            msg:`This email: ${email}, already exist`
+        })
+    }
 
     // Encriptar la contaseña
 
