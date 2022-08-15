@@ -9,6 +9,10 @@ const { validarCampos } = require('../middlewares/validarCampos');
 
 const router = Router();
 
+router.get('/:category',[
+    check('category', 'The category is invalid').isIn(['headphones', 'speakers', 'earphones']),
+    validarCampos
+], getProductos);
 router.get('/', getProductos);
 
 router.post('/', [

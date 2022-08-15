@@ -7,18 +7,34 @@ const getProductos = async (req, res = response) => {
 
     const { limite = 5, desde = 0 } = req.query;
 
+    const { category } = req.params;
 
-    const [totales, productos] = await Promise.all([
-        Producto.countDocuments({ state: true }),
-        Producto.find({ state: true })
-            .skip(Number(desde))
-            .limit(Number(limite))
-    ])
+    if( !!category ){
+        const [totales, productos] = await Promise.all([
+            Producto.countDocuments({ state: true , category}),
+            Producto.find({ state: true , category })
+                .skip(Number(desde))
+                .limit(Number(limite))
+        ])
+        
+        res.json({
+            totales,
+            productos
+        })
+    } else {
+        const [totales, productos] = await Promise.all([
+            Producto.countDocuments({ state: true }),
+            Producto.find({ state: true })
+                .skip(Number(desde))
+                .limit(Number(limite))
+        ])
 
-    res.json({
-        totales,
-        productos
-    })
+        res.json({
+            totales,
+            productos
+        })
+    }
+
 }
 
 const postProducto = async (req, res = response) => {
@@ -86,8 +102,6 @@ const deleteProducto = async (req, res = response) => {
         producto
     })
 }
-
-
 
 
 module.exports = {
