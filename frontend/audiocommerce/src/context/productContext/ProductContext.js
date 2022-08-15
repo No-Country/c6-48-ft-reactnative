@@ -16,12 +16,14 @@ import { productReducer } from "./productReducer";
             subTotal: number
         },
     ],
-    addProductCart: ()=>void,
-    removeProductCart: ()=>void,
+    addProducts: ()=>void,
+    addProductCart: (id)=>void,
+    removeProductCart: (id)=>void,
 }
 
 
 */
+// crear el context
 
 export const ProductContext = createContext({});
 
@@ -38,9 +40,21 @@ export const ProductProvider = ({ children }) => {
         dispatch({type:'addProducts', payload: data})
     }
 
+    const addProductCart = (id)=>{
+
+        dispatch({
+            type:'addProductCart', 
+            payload:{
+                id
+            }
+
+        })
+    }
+
     const value = {
         productState,
         addProducts,
+        addProductCart,
     }
 
     return (

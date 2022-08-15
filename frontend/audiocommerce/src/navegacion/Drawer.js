@@ -49,6 +49,10 @@ const Headphones = () => {
 		title='Add products'
 		onPress={()=> context.addProducts()}
 		/>
+		<Button 
+		title='Add products cart'
+		onPress={()=> context.addProductCart('1')}
+		/>
 		</ScrollView>
 
 	)
