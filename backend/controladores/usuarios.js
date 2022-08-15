@@ -11,8 +11,30 @@ const getUsuarios = (req, res = response) => {
 }
 
 const postUsuarios = async (req, res = response) => {
+    const { name,
+        email,
+        phoneNumber,
+        address,
+        zipCode,
+        country,
+        paymentMethod,
+        password,
+        img,
+        rol
+    } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
 
-    const usuario = new Usuario( req.body );
+    const usuario = new Usuario({
+        name,
+        email,
+        phoneNumber,
+        address,
+        zipCode,
+        country,
+        paymentMethod,
+        password,
+        img,
+        rol
+    });
 
     await usuario.save();
 
@@ -27,7 +49,7 @@ const putUsuarios = (req, res = response) => {
         msg: 'oka desde el controlador PUT'
     })
 }
-const deleteUsuarios = (req, res = response) => {  
+const deleteUsuarios = (req, res = response) => {
     res.json({
         msg: 'oka desde el controlador DELETE',
         params: req.params
