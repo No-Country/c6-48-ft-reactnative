@@ -1,38 +1,98 @@
 const { response } = require('express');
 
+const Producto = require('../models/producto');
 
-const getProductos = (req, res = response) => {
 
+const getProductos = async (req, res = response) => {
+
+    const { limite = 5, desde = 0 } = req.query;
+
+
+    const [totales, productos] = await Promise.all([
+        Producto.countDocuments({ state: true }),
+        Producto.find({ state: true })
+            .skip(Number(desde))
+            .limit(Number(limite))
+    ])
 
     res.json({
-        msg: 'oka desde el controlador GET',
+        totales,
+        productos
     })
 }
 
-const postProductos = (req, res = response) => {
+const postProducto = async (req, res = response) => {
+
+    const {
+        title,
+        img,
+        isNewProduct,
+        description,
+        price,
+        features,
+        category,
+    } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
+
+    const producto = new Producto({
+        title,
+        img,
+        isNewProduct,
+        description,
+        price,
+        features,
+        category,
+    });
+
+
+    await producto.save();
+
     res.json({
         msg: 'oka desde el controlador POST',
-        body: req.body
+        producto
 
     })
 }
-const putProductos = (req, res = response) => {
+
+const putProducto = async (req, res = response) => {
+
+    const { id } = req.params;
+
+    const { _id, ...rest } = req.body;
+    //validar contra base de datos
+
+
+
+    const producto = await Producto.findByIdAndUpdate(id, rest);
+
+
     res.json({
-        msg: 'oka desde el controlador PUT'
+        msg: 'oka desde el controlador PUT',
+        producto
     })
 }
-const deleteProductos = (req, res = response) => {
+
+const deleteProducto = async (req, res = response) => {
+
+    const { id } = req.params;
+
+    //borrar fisicamente
+    // const usuario = await Usuario.findByIdAndDelete( id );
+
+    const producto = await Producto.findByIdAndUpdate(id, { state: false })
+
+
     res.json({
         msg: 'oka desde el controlador DELETE',
-        params: req.params
+        producto
     })
 }
+
 
 
 
 module.exports = {
     getProductos,
-    postProductos,
-    putProductos,
-    deleteProductos,
+    postProducto,
+    putProducto,
+    deleteProducto,
 }
