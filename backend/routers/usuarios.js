@@ -3,7 +3,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { getUsuarios, postUsuarios, putUsuarios, deleteUsuarios } = require('../controladores/usuarios');
-const { roleValidator } = require('../helpers/db-validators');
+const { roleValidator, emailExist } = require('../helpers/db-validators');
 const { validarCampos } = require('../middlewares/validarCampos');
 const Rol = require('../models/rol');
 
@@ -21,9 +21,10 @@ router.post('/', [
     check('paymentMethod', 'The paymentMethod is required').notEmpty(),
     check('password', 'The password is required').notEmpty(),
     check('password', 'The password is invalid, min 6 caracters').isLength({min: 6}),
-    check('rol', 'The rol is not valid').isIn(['ADMIN_ROLE', 'USER_ROLE']),
-    // check('rol').custom( roleValidator ),
+    // check('rol', 'The rol is not valid').isIn(['ADMIN_ROLE', 'USER_ROLE']),
+    check('rol').custom( roleValidator ),
     check('email', 'The email is not valid').isEmail(),
+    check('email').custom( emailExist ),
     validarCampos
 ],postUsuarios )
 router.put('/', putUsuarios )

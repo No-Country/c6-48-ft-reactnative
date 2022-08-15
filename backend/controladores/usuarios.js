@@ -38,15 +38,7 @@ const postUsuarios = async (req, res = response) => {
         img,
         rol
     });
-    //Verificar si existe el correo
 
-    const existeEmail = await Usuario.findOne({email});
-
-    if( existeEmail ){
-        return res.status(400).json({
-            msg:`This email: ${email}, already exist`
-        })
-    }
 
     // Encriptar la contaseña
 
