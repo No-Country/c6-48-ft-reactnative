@@ -10,7 +10,7 @@ router.get('/', getUsuarios );
 
 router.post('/', postUsuarios )
 router.put('/', putUsuarios )
-router.delete('/',deleteUsuarios )
+router.delete('/:id',deleteUsuarios )
 
 
 module.exports = router;

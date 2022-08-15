@@ -21,13 +21,17 @@ class Server {
     middlewares (){
         //CORS
         this.app.use(cors());
+        // parseo y lectura del body
+        this.app.use( express.json());
         //directorio publico
-        this.app.use(express.static('public'))
+        this.app.use(express.static('public'));
+
     }
 
     routes (){
 
         this.app.use( this.pathUsuarios , require('../routers/usuarios'))
+        this.app.use( this.pathProductos , require('../routers/productos'))
     }
 
     listen (){

@@ -1,7 +1,7 @@
 const { response } = require('express');
 
 
-const getUsuarios = (req, res = response) => {
+const getProductos = (req, res = response) => {
 
 
     res.json({
@@ -9,19 +9,19 @@ const getUsuarios = (req, res = response) => {
     })
 }
 
-const postUsuarios = (req, res = response) => {
+const postProductos = (req, res = response) => {
     res.json({
         msg: 'oka desde el controlador POST',
         body: req.body
 
     })
 }
-const putUsuarios = (req, res = response) => {
+const putProductos = (req, res = response) => {
     res.json({
         msg: 'oka desde el controlador PUT'
     })
 }
-const deleteUsuarios = (req, res = response) => {
+const deleteProductos = (req, res = response) => {
     res.json({
         msg: 'oka desde el controlador DELETE',
         params: req.params
@@ -31,8 +31,8 @@ const deleteUsuarios = (req, res = response) => {
 
 
 module.exports = {
-    getUsuarios,
-    postUsuarios,
-    putUsuarios,
-    deleteUsuarios,
+    getProductos,
+    postProductos,
+    putProductos,
+    deleteProductos,
 }
