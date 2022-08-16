@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import { data } from "../../api/data";
+// import { data } from "../../api/data";
 import { productReducer } from "./productReducer";
 
 
@@ -36,7 +36,7 @@ export const ProductProvider = ({ children }) => {
         cart:[]
     })
 
-    const addProducts = ()=>{
+    const addProducts = ( data )=>{
         dispatch({type:'addProducts', payload: data})
     }
 

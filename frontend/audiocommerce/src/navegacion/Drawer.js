@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Button, ScrollView, Text } from 'react-native';
 import { DrawerContent, HeaderApp } from '../components';
 import { ProductContext } from '../context/productContext/ProductContext';
+import { apiConfigProductos } from '../api/apiProductos';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +22,7 @@ export const MenuDrawer = () => {
 					top: 90,
 				},
 			}}
-			drawerContent={(props)=><DrawerContent {...props}/>}
+			drawerContent={(props) => <DrawerContent {...props} />}
 		>
 			<Drawer.Screen name="Headphones" component={Headphones} />
 			<Drawer.Screen name="Speakers" component={Speakers} />
@@ -36,23 +37,37 @@ const Headphones = () => {
 
 	const context = useContext(ProductContext)
 
-	
+	const dataHeadphones = async () => {
+		const { data } = await apiConfigProductos.get('/headphones', {
+			params: {
+				limite: 10
+			}
+		});
+		context.addProducts(data.productos)
+
+	}
+
+	useEffect(() => {
+		dataHeadphones()
+	}, [])
+
+
 	return (
 		<ScrollView>
-		<Text>
-			{
-				JSON.stringify(context, null , 4 )
-			}
+			<Text>
+				{
+					JSON.stringify(context.productState, null, 4)
+				}
 
-		</Text>
-		<Button 
-		title='Add products'
-		onPress={()=> context.addProducts()}
-		/>
-		<Button 
-		title='Add products cart'
-		onPress={()=> context.addProductCart('1')}
-		/>
+			</Text>
+			<Button
+				title='Add products'
+				onPress={() => dataHeadphones()}
+			/>
+			<Button
+				title='Add products cart'
+				onPress={() => context.addProductCart('1')}
+			/>
 		</ScrollView>
 
 	)
