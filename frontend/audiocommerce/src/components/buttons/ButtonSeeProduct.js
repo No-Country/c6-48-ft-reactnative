@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import { themeApp } from '../../themeApp/themeApp'
 
-export const ButtonSeeProduct = () => {
+export const ButtonSeeProduct = ({ onPress }) => {
   return (
     <TouchableOpacity
         style={{
@@ -12,6 +12,7 @@ export const ButtonSeeProduct = () => {
             height:60,
             justifyContent:'center'
         }}
+        onPress={ onPress }
     >
         <Text
             style={{
