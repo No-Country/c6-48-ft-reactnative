@@ -4,6 +4,7 @@ import { Button, ScrollView, Text } from 'react-native';
 import { DrawerContent, HeaderApp } from '../components';
 import { ProductContext } from '../context/productContext/ProductContext';
 import { apiConfigProductos } from '../api/apiProductos';
+import { NavegacionStack } from './Stack';
 
 const Drawer = createDrawerNavigator();
 
@@ -27,7 +28,7 @@ export const MenuDrawer = () => {
 			<Drawer.Screen name="Headphones" component={Headphones} />
 			<Drawer.Screen name="Speakers" component={Speakers} />
 			<Drawer.Screen name="Earphones" component={Earphones} />
-			<Drawer.Screen name="Home" component={Home} />
+			<Drawer.Screen name="Home" component={NavegacionStack} />
 			<Drawer.Screen name="Checkout" component={Checkout} />
 		</Drawer.Navigator>
 	);
