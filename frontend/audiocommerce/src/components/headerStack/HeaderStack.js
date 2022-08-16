@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        height: 60,
     },
     containerHeader: {
-        height: 90,
         alignItems: 'center',
         justifyContent: 'center',
     },
