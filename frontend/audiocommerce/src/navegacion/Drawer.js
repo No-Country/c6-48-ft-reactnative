@@ -3,8 +3,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Button, ScrollView, Text } from 'react-native';
 import { DrawerContent, HeaderApp } from '../components';
 import { ProductContext } from '../context/productContext/ProductContext';
-import { apiConfigProductos } from '../api/apiProductos';
 import { NavegacionStack } from './Stack';
+import { apiDB } from '../api/apiDb';
 
 const Drawer = createDrawerNavigator();
 
@@ -39,7 +39,7 @@ const Headphones = () => {
 	const context = useContext(ProductContext)
 
 	const dataHeadphones = async () => {
-		const { data } = await apiConfigProductos.get('/headphones', {
+		const { data } = await apiDB.get('/productos', {
 			params: {
 				limite: 10
 			}
