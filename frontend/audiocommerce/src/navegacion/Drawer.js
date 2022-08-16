@@ -11,6 +11,7 @@ const Drawer = createDrawerNavigator();
 export const MenuDrawer = () => {
 	return (
 		<Drawer.Navigator
+		initialRouteName='Home'
 			screenOptions={{
 				header: (props) => <HeaderApp {...props} />,
 				overlayColor: 1,
