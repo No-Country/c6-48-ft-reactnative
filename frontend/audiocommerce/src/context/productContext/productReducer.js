@@ -9,6 +9,11 @@ export const productReducer = (state, action) => {
                 ...state,
                 products: action.payload,
             }
+        case 'addProductDetails':
+            return {
+                ...state,
+                productDetails: action.payload,
+            }
         case 'addProductCart':
             return {
                 ...state,

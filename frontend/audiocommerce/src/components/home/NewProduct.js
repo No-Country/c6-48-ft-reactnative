@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Image, Text, View } from 'react-native'
 import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '../';
+import { ProductContext } from '../../context/productContext/ProductContext';
 
 export const NewProduct = ({ product, navigation }) => {
+
+    const {addProductDetails} = useContext(ProductContext);
 
     return (
 
@@ -30,7 +33,10 @@ export const NewProduct = ({ product, navigation }) => {
                     {product.description}
                 </Text>
 
-                <ButtonSeeProduct onPress={() => navigation.navigate('ProductoScreen')} />
+                <ButtonSeeProduct onPress={() => {
+                    navigation.navigate('ProductoScreen')
+                    addProductDetails(product)
+                    }} />
             </View>
 
         </View>

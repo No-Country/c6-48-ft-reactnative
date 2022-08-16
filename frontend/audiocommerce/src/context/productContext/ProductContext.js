@@ -35,6 +35,7 @@ export const ProductProvider = ({ children }) => {
     const [productState, dispatch] = useReducer( productReducer,{
         products:[],
         cart:[],
+        productDetails:{}
     })
 
     const addProducts = ( data )=>{
@@ -52,10 +53,18 @@ export const ProductProvider = ({ children }) => {
         })
     }
 
+    const addProductDetails = ( product )=>{
+        dispatch({
+            type:'addProductDetails',
+            payload: product
+        })
+    }
+
     const value = {
         productState,
         addProducts,
         addProductCart,
+        addProductDetails
     }
 
     return (
