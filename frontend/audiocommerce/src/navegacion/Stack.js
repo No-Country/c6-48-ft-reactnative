@@ -11,7 +11,7 @@ export const NavegacionStack= ( )  => {
   return (
     <Stack.Navigator
         screenOptions={{
-            header:(props)=> <HeaderStack {...props} />
+            // header:(props)=> <HeaderStack {...props} />
         }}
     >
       <Stack.Screen name="CategoriaScreen" component={ CategoriaScreen } />
