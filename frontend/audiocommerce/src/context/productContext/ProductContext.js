@@ -16,6 +16,7 @@ import { productReducer } from "./productReducer";
             subTotal: number
         },
     ],
+    category: '',
     addProducts: ()=>void,
     addProductCart: (id)=>void,
     removeProductCart: (id)=>void,
@@ -38,8 +39,10 @@ export const ProductProvider = ({ children }) => {
     })
 
     const addProducts = ( data, category )=>{
-        dispatch({type:'addProducts', payload: data})
-        dispatch({type:'setCategory', payload: category})
+        dispatch({type:'addProducts', payload: {
+            data,
+            category
+        }})
     }
 
     const addProductCart = (id)=>{

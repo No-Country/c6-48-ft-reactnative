@@ -7,7 +7,8 @@ export const productReducer = (state, action) => {
         case 'addProducts':
             return {
                 ...state,
-                products: action.payload
+                products: action.payload.data,
+                category: action.payload.category
             }
         case 'addProductCart':
             return {
@@ -28,11 +29,7 @@ export const productReducer = (state, action) => {
                     })
                 ]
             }
-        case 'setCategory':
-            return {
-                ...state,
-                category: action.payload
-            }
+
 
         default:
             return {
