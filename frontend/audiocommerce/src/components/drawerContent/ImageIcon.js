@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         top: -60,
         position: 'absolute',
-        zIndex: 1,
+        zIndex: 10,
     },
     sombra:{
         width: 220,
         resizeMode: 'contain',
         position: 'absolute',
-        zIndex: 1,
+        zIndex: 10,
         top: -20,
     }
 })
