@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 export const MenuDrawer = () => {
 	return (
 		<Drawer.Navigator
-		initialRouteName='Home'
+		// initialRouteName='Home'
 			screenOptions={{
 				header: (props) => <HeaderApp {...props} />,
 				overlayColor: 1,
@@ -23,10 +23,10 @@ export const MenuDrawer = () => {
 			}}
 			drawerContent={(props) => <DrawerContent {...props} />}
 		>
+			<Drawer.Screen name="Home" component={HomeScreen} />
 			<Drawer.Screen name="Headphones" component={HeadphonesScreen} />
 			<Drawer.Screen name="Speakers" component={SpeakersScreen} />
 			<Drawer.Screen name="Earphones" component={EarphonesScreen} />
-			<Drawer.Screen name="Home" component={HomeScreen} />
 			<Drawer.Screen name="Checkout" component={CheckoutScreen} />
 			<Drawer.Screen name="ProductoScreen" component={ProductoScreen} />
 		</Drawer.Navigator>

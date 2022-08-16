@@ -10,13 +10,15 @@ export const DrawerContent = ({ navigation }) => {
     const state = navigation.getState();
 
     return (
-            <View style={{paddingBottom: 50}}>
+        <DrawerContentScrollView>
+
+            <View style={{ paddingBottom: 50 }}>
                 {
                     state.routes.map(({ key, name }) => {
 
-                        if(name==='Checkout') return null;
-                        if(name==='Home') return null;
-                        if(name==='ProductoScreen') return null;
+                        if (name === 'Checkout') return null;
+                        if (name === 'Home') return null;
+                        if (name === 'ProductoScreen') return null;
 
                         let iconUrl;
 
@@ -56,6 +58,7 @@ export const DrawerContent = ({ navigation }) => {
                         )
                     })}
             </View>
+        </DrawerContentScrollView>
     )
 }
 
