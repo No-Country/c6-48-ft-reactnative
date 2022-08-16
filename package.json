@@ -1,0 +1,19 @@
+{
+  "name": "c6-48-ft-reactnative",
+  "version": "1.0.0",
+  "description": "[![preview](./preview.png)](https://reactnative.dev/)",
+  "main": "backend/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/No-Country/c6-48-ft-reactnative.git"
+  },
+  "author": "abel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/No-Country/c6-48-ft-reactnative/issues"
+  },
+  "homepage": "https://github.com/No-Country/c6-48-ft-reactnative#readme"
+}
