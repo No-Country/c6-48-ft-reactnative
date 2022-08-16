@@ -5,12 +5,19 @@ import { ImageIcon } from './ImageIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { themeApp } from '../../themeApp/themeApp';
 
-export const DrawerContent = ({ navigation, state }) => {
+export const DrawerContent = ({ navigation }) => {
+
+    const state = navigation.getState();
+
     return (
-        <DrawerContentScrollView >
             <View style={{paddingBottom: 50}}>
                 {
                     state.routes.map(({ key, name }) => {
+
+                        if(name==='Checkout') return null;
+                        if(name==='Home') return null;
+                        if(name==='ProductoScreen') return null;
+
                         let iconUrl;
 
                         switch (name) {
@@ -23,13 +30,6 @@ export const DrawerContent = ({ navigation, state }) => {
                             case 'Earphones':
                                 iconUrl = require('../../assets/img/menu/menu-earphones.png');
                                 break;
-                            case 'Home':
-                                iconUrl = require('../../assets/img/menu/menu-home.png');
-                                break;
-                            case 'Checkout':
-                                iconUrl = require('../../assets/img/menu/menu-checkout.png');
-                                break;
-
                             default:
                                 iconUrl = require('../../assets/img/menu/menu-headphone.png')
                                 break;
@@ -47,7 +47,7 @@ export const DrawerContent = ({ navigation, state }) => {
                                     <View style={styles.containerText}>
                                         <Text style={styles.routeName}>{name}</Text>
                                         <Text style={styles.textShop}>
-                                            {(name==='Home')? 'GO' : 'SHOP'}
+                                            SHOP
                                             <Icon name='chevron-forward-outline' size={16} color={themeApp.colorPrimary} />
                                         </Text>
                                     </View>
@@ -56,7 +56,6 @@ export const DrawerContent = ({ navigation, state }) => {
                         )
                     })}
             </View>
-        </DrawerContentScrollView>
     )
 }
 
