@@ -33,11 +33,13 @@ export const ProductProvider = ({ children }) => {
 
     const [productState, dispatch] = useReducer( productReducer,{
         products:[],
-        cart:[]
+        cart:[],
+        category:''
     })
 
-    const addProducts = ( data )=>{
+    const addProducts = ( data, category )=>{
         dispatch({type:'addProducts', payload: data})
+        dispatch({type:'setCategory', payload: category})
     }
 
     const addProductCart = (id)=>{

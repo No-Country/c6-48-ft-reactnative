@@ -28,6 +28,11 @@ export const productReducer = (state, action) => {
                     })
                 ]
             }
+        case 'setCategory':
+            return {
+                ...state,
+                category: action.payload
+            }
 
         default:
             return {

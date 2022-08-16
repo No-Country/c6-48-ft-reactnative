@@ -44,7 +44,7 @@ const Headphones = () => {
 				limite: 10
 			}
 		});
-		context.addProducts(data.productos)
+		context.addProducts(data.productos, 'headphones')
 
 	}
 
