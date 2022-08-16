@@ -38,11 +38,8 @@ export const ProductProvider = ({ children }) => {
         category:''
     })
 
-    const addProducts = ( data, category )=>{
-        dispatch({type:'addProducts', payload: {
-            data,
-            category
-        }})
+    const addProducts = ( data )=>{
+        dispatch({type:'addProducts', payload: data })
     }
 
     const addProductCart = (id)=>{
