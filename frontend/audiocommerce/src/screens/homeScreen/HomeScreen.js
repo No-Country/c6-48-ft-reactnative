@@ -1,15 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {ScrollView, Text} from 'react-native';
 import { apiDB } from '../../api/apiDb';
-import { Loading } from '../../components';
-import { NewProduct } from '../../components/home/NewProduct';
+import { DrawerContent, Loading } from '../../components';
+import { NewProduct } from '../../components';
 import { ProductContext } from '../../context/productContext/ProductContext';
 
-export const HomeScreen = () => {
-	
-	const {addProducts, productState } = useContext(ProductContext)
+export const HomeScreen = ({navigation}) => {
+
+	const {addProducts, productState } = useContext(ProductContext);
+
 	const [loading, setLoading] = useState(true);
+
 	
+
 	const getData = async () => {
 
 		try {
@@ -40,7 +43,8 @@ export const HomeScreen = () => {
 	const { products } = productState;
 	return (
 		<ScrollView>
-			<NewProduct  product= { products[0]}/>
+			<NewProduct  product={ products[4]} navigation={navigation}/>
+			<DrawerContent navigation={navigation}/>
 		</ScrollView>
 	)
 }
