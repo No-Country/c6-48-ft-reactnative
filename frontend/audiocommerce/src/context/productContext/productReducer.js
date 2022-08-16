@@ -7,8 +7,7 @@ export const productReducer = (state, action) => {
         case 'addProducts':
             return {
                 ...state,
-                products: action.payload.data,
-                category: action.payload.category
+                products: action.payload,
             }
         case 'addProductCart':
             return {
