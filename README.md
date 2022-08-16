@@ -8,7 +8,7 @@
 
 - 💻 Frontend (React Native)
 - ⚙ Backend (Node Js y Express)
-- 💾 Base de datos (MongoDB)
+- 💾 Base de datos (MongoDB) https://documenter.getpostman.com/view/16967615/VUjTm4FX
 
 ## Puntos del Ecommerce
 
