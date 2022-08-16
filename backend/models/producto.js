@@ -12,7 +12,7 @@ const ProductoSchema = Schema({
         type: String,
     },
     isNewProduct: {
-        type: String,
+        type: Boolean,
         default: true
     },
     description: {
