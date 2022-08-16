@@ -35,7 +35,6 @@ export const ProductProvider = ({ children }) => {
     const [productState, dispatch] = useReducer( productReducer,{
         products:[],
         cart:[],
-        category:''
     })
 
     const addProducts = ( data )=>{
