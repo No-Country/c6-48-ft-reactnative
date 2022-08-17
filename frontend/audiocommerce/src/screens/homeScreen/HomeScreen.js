@@ -45,7 +45,7 @@ export const HomeScreen = ({navigation}) => {
 			<BlackCard  product={ products[3]} navigation={navigation}/>
 			<DrawerContent navigation={navigation}/>
 			<OrangeCard  product={ products[6]} navigation={navigation} />
-			<GrayCard product={ products[5]} navigation={navigation} />
+			<GrayCard product={ products[4]} navigation={navigation} />
 		</ScrollView>
 	)
 }
