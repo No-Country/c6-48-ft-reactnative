@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { DrawerContentScrollView } from '@react-navigation/drawer'
-import { ImageIcon } from './ImageIcon';
+import { ImageIcon } from '../';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { themeApp } from '../../themeApp/themeApp';
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         backgroundColor: themeApp.colorSecundary,
         borderRadius: 10,
         height: 200,
-        width: 440,
+        width: themeApp.widthStd,
         alignItems: 'center',
         justifyContent: 'center'
     },
