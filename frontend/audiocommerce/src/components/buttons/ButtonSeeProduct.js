@@ -2,11 +2,11 @@ import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import { themeApp } from '../../themeApp/themeApp'
 
-export const ButtonSeeProduct = ({ onPress }) => {
+export const ButtonSeeProduct = ({ onPress, backgroundColor }) => {
   return (
     <TouchableOpacity
         style={{
-            backgroundColor: themeApp.colorPrimary,
+            backgroundColor,
             paddingHorizontal: 20,
             width: 280,
             height:60,
