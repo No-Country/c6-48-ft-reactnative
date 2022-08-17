@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {ScrollView, Text} from 'react-native';
 import { apiDB } from '../../api/apiDb';
-import { DrawerContent, Loading, OrangeCard } from '../../components';
-import { NewProduct } from '../../components';
+import { DrawerContent, Loading, OrangeCard, BlackCard, GrayCard } from '../../components';
 import { ProductContext } from '../../context/productContext/ProductContext';
 
 export const HomeScreen = ({navigation}) => {
@@ -18,7 +17,7 @@ export const HomeScreen = ({navigation}) => {
 		try {
 			const { data } = await apiDB.get('/productos', {
 				params: {
-					limite: 10
+					limite: 20
 				}
 			});
 			addProducts(data.productos)
@@ -43,9 +42,10 @@ export const HomeScreen = ({navigation}) => {
 	const { products } = productState;
 	return (
 		<ScrollView>
-			<NewProduct  product={ products[4]} navigation={navigation}/>
+			<BlackCard  product={ products[3]} navigation={navigation}/>
 			<DrawerContent navigation={navigation}/>
 			<OrangeCard  product={ products[6]} navigation={navigation} />
+			<GrayCard product={ products[5]} navigation={navigation} />
 		</ScrollView>
 	)
 }
