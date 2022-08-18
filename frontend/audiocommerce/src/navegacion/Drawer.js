@@ -1,14 +1,15 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent, HeaderApp } from '../components';
-import { CheckoutScreen, EarphonesScreen, HeadphonesScreen, HomeScreen, ProductoScreen, SpeakersScreen } from '../screens';
+import { AdminScreen, CheckoutScreen, EarphonesScreen, HeadphonesScreen, HomeScreen, ProductoScreen, SpeakersScreen } from '../screens';
+import { StackAdmin } from './StackAdmin';
 
 const Drawer = createDrawerNavigator();
 
 export const MenuDrawer = () => {
 	return (
 		<Drawer.Navigator
-		// initialRouteName='Home'
+		initialRouteName='StackAdmin'
 			screenOptions={{
 				header: (props) => <HeaderApp {...props} />,
 				overlayColor: 1,
@@ -29,6 +30,7 @@ export const MenuDrawer = () => {
 			<Drawer.Screen name="Earphones" component={EarphonesScreen} />
 			<Drawer.Screen name="Checkout" component={CheckoutScreen} />
 			<Drawer.Screen name="ProductoScreen" component={ProductoScreen} />
+			<Drawer.Screen name="StackAdmin" component={StackAdmin} />
 		</Drawer.Navigator>
 	);
 }
