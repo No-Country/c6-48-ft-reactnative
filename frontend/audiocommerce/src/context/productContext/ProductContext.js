@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { apiDB } from "../../api/apiDb";
 // import { data } from "../../api/data";
 import { productReducer } from "./productReducer";
 
@@ -35,7 +36,8 @@ export const ProductProvider = ({ children }) => {
     const [productState, dispatch] = useReducer( productReducer,{
         products:[],
         cart:[],
-        productDetails:{}
+        productDetails:{},
+        errorMsg:''
     })
 
     const addProducts = ( data )=>{
@@ -60,11 +62,41 @@ export const ProductProvider = ({ children }) => {
         })
     }
 
+    const createProduct = async( product )=>{
+
+        const body = JSON.stringify(product);
+
+        try {
+            const { data } = await apiDB.post('/productos', body, {
+                "headers": {
+    
+                    "content-type": "application/json",
+                    
+                    },
+            })
+            console.log(data)
+        } catch (error) {
+            console.log(JSON.stringify(error.response.data.errors, null , 4))
+            dispatch({
+                type: 'addErrorMsg',
+                payload: error.response.data.errors[0].msg
+            })
+        }
+    }
+
+    const removeError = ()=>{
+        dispatch({
+            type: 'removeError'
+        })
+    }
+
     const value = {
         productState,
         addProducts,
         addProductCart,
-        addProductDetails
+        addProductDetails,
+        createProduct,
+        removeError
     }
 
     return (
