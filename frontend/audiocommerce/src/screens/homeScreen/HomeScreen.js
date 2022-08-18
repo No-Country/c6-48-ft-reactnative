@@ -42,10 +42,10 @@ export const HomeScreen = ({navigation}) => {
 	const { products } = productState;
 	return (
 		<ScrollView>
-			<BlackCard  product={ products[3]} navigation={navigation}/>
+			<BlackCard  product={ products[4]} navigation={navigation}/>
 			<DrawerContent navigation={navigation}/>
 			<OrangeCard  product={ products[6]} navigation={navigation} />
-			<GrayCard product={ products[4]} navigation={navigation} />
+			<GrayCard product={ products[13]} navigation={navigation} />
 		</ScrollView>
 	)
 }

@@ -7,7 +7,7 @@ import { ImageCirc } from '../images/ImageCirc'
 
 export const OrangeCard = ({ product, navigation }) => {
 
-console.log(JSON.stringify(product,null,6))
+// console.log(JSON.stringify(product,null,6))
 
     const { addProductDetails } = useContext(ProductContext);
 
