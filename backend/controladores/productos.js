@@ -63,7 +63,7 @@ const postProducto = async (req, res = response) => {
     await producto.save();
 
     res.json({
-        msg: 'oka desde el controlador POST',
+        msg: `the ${producto.title} product was created`,
         producto
 
     })
@@ -82,7 +82,7 @@ const putProducto = async (req, res = response) => {
 
 
     res.json({
-        msg: 'oka desde el controlador PUT',
+        msg: `the ${producto.title} product was modified`,
         producto
     })
 }
@@ -98,7 +98,7 @@ const deleteProducto = async (req, res = response) => {
 
 
     res.json({
-        msg: 'oka desde el controlador DELETE',
+        msg: `the ${producto.title} product was delete`,
         producto
     })
 }
