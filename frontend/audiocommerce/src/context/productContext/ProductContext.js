@@ -74,7 +74,7 @@ export const ProductProvider = ({ children }) => {
                     
                     },
             })
-            console.log(data)
+            return true;
         } catch (error) {
             console.log(JSON.stringify(error.response.data.errors, null , 4))
             dispatch({
