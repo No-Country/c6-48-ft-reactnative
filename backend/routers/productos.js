@@ -21,6 +21,7 @@ router.post('/', [
     check('price', 'The price is required').notEmpty(),
     check('features', 'The features is required').notEmpty(),
     check('category', 'The category is required').notEmpty(),
+    check('stock', 'The stock is required').notEmpty(),
     validarCampos
 ], postProducto)
 

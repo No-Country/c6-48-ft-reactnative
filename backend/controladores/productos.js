@@ -47,6 +47,7 @@ const postProducto = async (req, res = response) => {
         price,
         features,
         category,
+        stock
     } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
 
     const producto = new Producto({
@@ -57,6 +58,7 @@ const postProducto = async (req, res = response) => {
         price,
         features,
         category,
+        stock
     });
 
 

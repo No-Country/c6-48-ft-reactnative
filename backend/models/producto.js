@@ -23,6 +23,10 @@ const ProductoSchema = Schema({
         type: Number,
         require:[ true, 'The price is required']
     },
+    stock: {
+        type: Number,
+        require:[ true, 'The stock is required']
+    },
     features: {
         type: String,
         require: [ true, 'The feature is required']
