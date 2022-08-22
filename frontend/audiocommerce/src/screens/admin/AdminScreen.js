@@ -78,7 +78,6 @@ export const AdminScreen = () => {
                                 onChangeText={handleChange('title')}
                                 value={values.title}
                             />
-                            {console.log(errors)}
                         </View>
                         {
                             (errors.title) && (<Text style={styles.errorMsg} >

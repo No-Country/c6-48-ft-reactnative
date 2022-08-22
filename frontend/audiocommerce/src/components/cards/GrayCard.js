@@ -6,7 +6,7 @@ import { ButtonSeeProduct } from '../buttons/ButtonSeeProduct'
 
 export const GrayCard = ({ product, navigation }) => {
 
-    console.log(JSON.stringify(product,null,6))
+    // console.log(JSON.stringify(product,null,6))
 
     const { addProductDetails } = useContext(ProductContext);
 

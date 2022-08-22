@@ -38,6 +38,9 @@ const ProductoSchema = Schema({
     state: {
         type: Boolean,
         default: true
+    },
+    public_id_cloudinary:{
+        type:String
     }
 });
 
