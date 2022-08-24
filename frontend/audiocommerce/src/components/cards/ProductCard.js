@@ -4,7 +4,7 @@ import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '../buttons/ButtonSeeProduct'
 
-export const ProductCard = ({ product, navigation }) => {
+export const ProductCard = ({ product, navigation, screenDetails }) => {
 
     const {addProductDetails} = useContext(ProductContext);
     
@@ -31,7 +31,7 @@ export const ProductCard = ({ product, navigation }) => {
                     <Text style={styles.description}>{product.description}</Text>
                 </View>
                 <ButtonSeeProduct onPress={() => {
-                    navigation.navigate('ProductoScreen')
+                    navigation.navigate(screenDetails)
                     addProductDetails(product)
                 }}
                     backgroundColor={themeApp.colorPrimary}

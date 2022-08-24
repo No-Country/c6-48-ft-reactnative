@@ -3,6 +3,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent, HeaderApp } from '../components';
 import { AdminScreen, CheckoutScreen, EarphonesScreen, HeadphonesScreen, HomeScreen, ProductoScreen, SpeakersScreen } from '../screens';
 import { StackAdmin } from './StackAdmin';
+import { StackHeadphones } from './StackHeadphones';
+import { StackEarphones } from './StackEarphones';
+import { StackSpeakers } from './StackSpeakers';
 
 const Drawer = createDrawerNavigator();
 
@@ -24,9 +27,9 @@ export const MenuDrawer = () => {
 			drawerContent={(props) => <DrawerContent {...props} />}
 		>
 			<Drawer.Screen name="Home" component={HomeScreen} />
-			<Drawer.Screen name="Headphones" component={HeadphonesScreen} />
-			<Drawer.Screen name="Speakers" component={SpeakersScreen} />
-			<Drawer.Screen name="Earphones" component={EarphonesScreen} />
+			<Drawer.Screen name="Headphones" component={StackHeadphones} />
+			<Drawer.Screen name="Speakers" component={StackSpeakers} />
+			<Drawer.Screen name="Earphones" component={StackEarphones} />
 			<Drawer.Screen name="Checkout" component={CheckoutScreen} />
 			<Drawer.Screen name="ProductoScreen" component={ProductoScreen} />
 			<Drawer.Screen name="StackAdmin" component={StackAdmin} />

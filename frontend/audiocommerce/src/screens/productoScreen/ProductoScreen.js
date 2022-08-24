@@ -3,9 +3,10 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp';
 import { convertToCurrency } from '../../helpers/converToCurrency'
+import { useNavigation } from '@react-navigation/native';
 
-export const ProductoScreen = ({ navigation }) => {
-
+export const ProductoScreen = () => {
+	const navigation = useNavigation();
 	const { productState } = useContext(ProductContext);
 
 	const producto = productState.productDetails;

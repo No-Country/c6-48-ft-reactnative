@@ -1,23 +1,24 @@
 import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 import { ProductCard } from '../../components/cards/ProductCard';
+import { PullToRefresh } from '../../components/loading/PullToRefresh';
 import { ProductContext } from '../../context/productContext/ProductContext';
 
 export const SpeakersScreen = ({navigation}) => {
 
-	const { productState } = useContext(ProductContext);
+	const { productState, getData } = useContext(ProductContext);
 
 	const {products} = productState;
 
 	const speaker = products.filter( product => product.category === 'speakers');
 
 	return (
-		<ScrollView>
+		<PullToRefresh onRefresh={ getData }>
 			{
 				speaker.map( product =>(
-					<ProductCard product={product} navigation={navigation} key={product._id}/>
+					<ProductCard product={product} navigation={navigation} key={product._id} screenDetails={'DetailsSpeakers'}/>
 				))
 			}
-		</ScrollView>
+		</PullToRefresh>
 	)
 }

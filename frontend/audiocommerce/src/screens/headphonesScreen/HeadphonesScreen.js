@@ -29,7 +29,7 @@ export const HeadphonesScreen = ({ navigation }) => {
 		<PullToRefresh onRefresh={(setRefresh) => getData(setRefresh)}>
 			{
 				headphones.map(product => (
-					<ProductCard product={product} navigation={navigation} key={product._id} />
+					<ProductCard product={product} navigation={navigation} key={product._id} screenDetails={'DetailsHeadphones'} />
 				))
 			}
 		</PullToRefresh>
