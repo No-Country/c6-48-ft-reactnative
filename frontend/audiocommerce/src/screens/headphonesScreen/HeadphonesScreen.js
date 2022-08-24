@@ -10,21 +10,9 @@ export const HeadphonesScreen = ({ navigation }) => {
 
 	const { productState, getData } = useContext(ProductContext);
 
-
-	useEffect(() => {
-		getData()
-	}, [])
-
-
-	if (productState.products.length === 0 && productState.isLoading) {
-		return (
-			<Loading />
-		)
-	}
-
 	const headphones = productState.products.filter( product => product.category === 'headphones');
 
-
+	console.log('heyyyy headphones')
 	return (
 		<PullToRefresh onRefresh={(setRefresh) => getData(setRefresh)}>
 			{
