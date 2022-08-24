@@ -1,9 +1,14 @@
 import React from 'react';
 
-import { Text } from "react-native"
+import { Text, ScrollView } from "react-native"
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
+import { PullToRefresh } from '../../components/loading/PullToRefresh';
 
-export const CheckoutScreen = () => {
+export const CheckoutScreen = ({navigation}) => {
 	return (
-		<Text>Checkout</Text>
+		<ScrollView>
+			<Text>Checkout</Text>
+			<FooterScreen {...navigation}/> 
+		</ScrollView>
 	)
 }

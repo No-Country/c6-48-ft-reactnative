@@ -3,6 +3,7 @@ import { Loading } from '../../components';
 import { ProductCard } from '../../components/cards/ProductCard';
 import { PullToRefresh } from '../../components/loading/PullToRefresh';
 import { ProductContext } from '../../context/productContext/ProductContext';
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
 
 
 
@@ -19,7 +20,7 @@ export const HeadphonesScreen = ({ navigation }) => {
 					<ProductCard product={product} navigation={navigation} key={product._id} screenDetails={'DetailsHeadphones'} />
 				))
 			}
+			<FooterScreen {...navigation}/>
 		</PullToRefresh>
-
 	)
 }

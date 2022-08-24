@@ -4,6 +4,7 @@ import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp';
 import { convertToCurrency } from '../../helpers/converToCurrency'
 import { useNavigation } from '@react-navigation/native';
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
 
 export const ProductoScreen = () => {
 	const navigation = useNavigation();
@@ -113,8 +114,8 @@ export const ProductoScreen = () => {
 						color: '#7d7d7d'
 					}}>{producto.features}</Text>
 				</View>
-
 			</View>
+			<FooterScreen {...navigation}/>
 		</ScrollView>
 	)
 }

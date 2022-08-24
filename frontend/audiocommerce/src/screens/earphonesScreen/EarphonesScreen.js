@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native';
 import { ProductCard } from '../../components/cards/ProductCard';
 import { PullToRefresh } from '../../components/loading/PullToRefresh';
 import { ProductContext } from '../../context/productContext/ProductContext';
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
 
 export const EarphonesScreen = ({ navigation }) => {
 
@@ -18,6 +19,7 @@ export const EarphonesScreen = ({ navigation }) => {
 					<ProductCard product={product} navigation={navigation} key={product._id} screenDetails={'DetailsEarphones'}/>
 				))
 			}
+			<FooterScreen {...navigation}/>
 		</PullToRefresh>
 
 	)

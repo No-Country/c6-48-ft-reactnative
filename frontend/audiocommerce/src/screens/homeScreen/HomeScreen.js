@@ -4,7 +4,7 @@ import { apiDB } from '../../api/apiDb';
 import { DrawerContent, Loading, OrangeCard, BlackCard, GrayCard } from '../../components';
 import { PullToRefresh } from '../../components/loading/PullToRefresh';
 import { ProductContext } from '../../context/productContext/ProductContext';
-
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
 export const HomeScreen = ({navigation}) => {
 
 	const { productState, getData } = useContext(ProductContext);
@@ -31,6 +31,7 @@ export const HomeScreen = ({navigation}) => {
 			<DrawerContent navigation={navigation}/>
 			<OrangeCard  product={ products[3]} navigation={navigation} />
 			<GrayCard product={ products[2]} navigation={navigation} />
+			<FooterScreen {...navigation}/>
 		</PullToRefresh>
 	)
 }
