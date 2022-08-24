@@ -11,7 +11,6 @@ export const EarphonesScreen = ({ navigation }) => {
 	const {products} = productState;
 
 	const earphones = products.filter( product => product.category === 'earphones');
-	console.log(JSON.stringify(earphones, null, 6))
 	return (	
 		<PullToRefresh onRefresh={ getData }>
 			{
