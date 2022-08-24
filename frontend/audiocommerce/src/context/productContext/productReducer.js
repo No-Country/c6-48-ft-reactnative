@@ -14,10 +14,7 @@ export const productReducer = (state, action) => {
                 ...state,
                 productDetails: action.payload,
             }
-        case 'addProductCart':
-            return {
-                ...state,
-            }
+
         case 'addErrorMsg':
             return {
                 ...state,
@@ -33,7 +30,6 @@ export const productReducer = (state, action) => {
                 ...state,
                 isLoading: action.payload
             }
-
 
         default:
             return {

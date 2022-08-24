@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { themeApp } from '../../themeApp/themeApp';
+import { ModalCart } from '../modals/ModalCart';
+import { CartContext } from '../../context/cartContext/CartContext';
 
 export const HeaderApp = ({ navigation }) => {
+
+
+    const { setShowCart } = useContext(CartContext);
 
     return (
         <View
@@ -31,11 +36,12 @@ export const HeaderApp = ({ navigation }) => {
                     <Icon name='home-outline' size={26} color={ themeApp.colorWhite } />
                 </TouchableOpacity>
                 <TouchableOpacity
+                    onPress={()=> setShowCart(true)}
                 >
                     <Icon name='cart-outline' size={30} color={ themeApp.colorWhite } />
                 </TouchableOpacity>
             </View>
-
+        <ModalCart />
         </View>
     )
 }

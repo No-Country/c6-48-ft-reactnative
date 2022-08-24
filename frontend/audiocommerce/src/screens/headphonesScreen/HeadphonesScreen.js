@@ -12,7 +12,6 @@ export const HeadphonesScreen = ({ navigation }) => {
 
 	const headphones = productState.products.filter( product => product.category === 'headphones');
 
-	console.log('heyyyy headphones')
 	return (
 		<PullToRefresh onRefresh={(setRefresh) => getData(setRefresh)}>
 			{

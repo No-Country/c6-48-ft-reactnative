@@ -5,6 +5,7 @@ import { MenuDrawer } from './src/navegacion/Drawer';
 import { StatusBar } from 'react-native';
 import { themeApp } from './src/themeApp/themeApp';
 import { ProductProvider } from './src/context/productContext/ProductContext';
+import { CartProvider } from './src/context/cartContext/CartContext';
 
 const App = () => {
 
@@ -26,7 +27,9 @@ const AppState = ({ children }) => {
 
   return (
     <ProductProvider>
-      {children}
+      <CartProvider>
+        {children}
+      </CartProvider>
     </ProductProvider>
   )
 }

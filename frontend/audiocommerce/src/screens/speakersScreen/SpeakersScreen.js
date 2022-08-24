@@ -10,7 +10,6 @@ export const SpeakersScreen = ({navigation}) => {
 
 	const speaker = productState.products.filter( product => product.category === 'speakers');
 
-	console.log('hey speakers')
 	return (
 		<PullToRefresh onRefresh={ getData }>
 			{
