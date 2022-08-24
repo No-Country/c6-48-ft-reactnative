@@ -9,7 +9,6 @@ const Drawer = createDrawerNavigator();
 export const MenuDrawer = () => {
 	return (
 		<Drawer.Navigator
-		initialRouteName='StackAdmin'
 			screenOptions={{
 				header: (props) => <HeaderApp {...props} />,
 				overlayColor: 1,

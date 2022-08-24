@@ -28,6 +28,11 @@ export const productReducer = (state, action) => {
                 ...state,
                 errorMsg: ''
             }
+        case 'setLoading':
+            return {
+                ...state,
+                isLoading: action.payload
+            }
 
 
         default:

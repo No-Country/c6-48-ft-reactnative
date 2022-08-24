@@ -13,7 +13,7 @@ export const AdminScreen = () => {
 
     const { createProduct, productState, removeError } = useContext(ProductContext);
 
-    const [tempUri, setTempUri] = useState();
+    const [fileToUpload, setFileToUpload] = useState({});
 
     const { errorMsg } = productState;
 
@@ -32,11 +32,17 @@ export const AdminScreen = () => {
             quality: 0.5
 
         }, (resp) => {
-            console.log(JSON.stringify(resp, null, 6))
+
             if (resp.didCancel) return;
+
             if (!resp.assets) return;
-            console.log(resp.uri)
-            setTempUri(resp.assets[0].uri);
+
+            const { fileName, uri, type } = resp.assets[0];
+            setFileToUpload({
+                uri,
+                type,
+                name: fileName
+            });
         })
     }
     return (
@@ -54,7 +60,7 @@ export const AdminScreen = () => {
 
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                    createProduct(values);
+                    createProduct(values , fileToUpload );
                     setSubmitting(false);
                 }}
                 validationSchema={Yup.object().shape({
@@ -187,9 +193,9 @@ export const AdminScreen = () => {
 
 
                         {
-                            (tempUri) && (
+                            (fileToUpload.uri) && (
                                 <Image
-                                    source={{ uri: tempUri }}
+                                    source={{ uri: fileToUpload.uri }}
                                     style={{
                                       width: '100%',
                                       height: 400 
