@@ -8,10 +8,9 @@ export const SpeakersScreen = ({navigation}) => {
 
 	const { productState, getData } = useContext(ProductContext);
 
-	const {products} = productState;
+	const speaker = productState.products.filter( product => product.category === 'speakers');
 
-	const speaker = products.filter( product => product.category === 'speakers');
-
+	console.log('hey speakers')
 	return (
 		<PullToRefresh onRefresh={ getData }>
 			{
