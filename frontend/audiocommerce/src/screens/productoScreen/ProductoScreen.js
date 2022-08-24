@@ -10,7 +10,7 @@ export const ProductoScreen = () => {
 	const { productState } = useContext(ProductContext);
 
 	const producto = productState.productDetails;
-
+	console.log(JSON.stringify(producto, null, 4))
 	const price = convertToCurrency(producto.price);
 	
 	return (
