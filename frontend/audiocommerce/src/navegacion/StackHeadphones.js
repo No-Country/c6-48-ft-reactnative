@@ -1,8 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HeadphonesScreen } from '../screens';
+import { HeadphonesScreen, DetailsHeadphones } from '../screens';
 import { themeApp } from '../themeApp/themeApp';
-import { DetailsHeadphones } from '../screens/headphonesScreen/DetailsHeadphones';
 
 const Stack = createStackNavigator();
 

@@ -1,8 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SpeakersScreen } from '../screens';
+import { SpeakersScreen, DetailsSpeakers } from '../screens';
 import { themeApp } from '../themeApp/themeApp';
-import { DetailsSpeakers } from '../screens/speakersScreen/DetailsSpeakers';
 
 const Stack = createStackNavigator();
 

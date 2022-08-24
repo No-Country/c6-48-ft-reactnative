@@ -18,9 +18,7 @@ export const StackAdmin = () => {
         }}
     >
       <Stack.Screen name="AdminScreen" component={AdminScreen} />
-      {/* <Stack.Screen name="Notifications" component={Notifications} />
-      <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="Settings" component={Settings} /> */}
+
     </Stack.Navigator>
   );
 }

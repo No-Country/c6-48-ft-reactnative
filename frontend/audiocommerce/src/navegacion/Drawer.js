@@ -1,11 +1,9 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent, HeaderApp } from '../components';
-import { AdminScreen, CheckoutScreen, EarphonesScreen, HeadphonesScreen, HomeScreen, ProductoScreen, SpeakersScreen } from '../screens';
-import { StackAdmin } from './StackAdmin';
-import { StackHeadphones } from './StackHeadphones';
-import { StackEarphones } from './StackEarphones';
-import { StackSpeakers } from './StackSpeakers';
+import { CheckoutScreen, HomeScreen, ProductoScreen } from '../screens';
+import { StackHeadphones, StackSpeakers, StackEarphones, StackAdmin } from './';
+
 
 const Drawer = createDrawerNavigator();
 
