@@ -11,7 +11,8 @@ export const StackEarphones = () => {
         screenOptions={{
           cardStyle:{
             backgroundColor: themeApp.colorWhite
-          }
+          },
+          headerShown: false
         }}
         defaultScreenOptions={{
             

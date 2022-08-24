@@ -11,7 +11,8 @@ export const StackSpeakers = () => {
         screenOptions={{
           cardStyle:{
             backgroundColor: themeApp.colorWhite
-          }
+          },
+          headerShown: false
         }}
         defaultScreenOptions={{
             
