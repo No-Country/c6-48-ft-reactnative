@@ -1,8 +1,9 @@
 import React from 'react'
 import { ProductoScreen } from '../productoScreen/ProductoScreen'
 
-export const DetailsEarphones = () => {
+export const DetailsEarphones = ({ route }) => {
+  const { product } = route.params;
   return (
-    <ProductoScreen />
+    <ProductoScreen product={product}/>
     )
 }

@@ -1,3 +1,4 @@
+export { DetailsHome } from "./homeScreen/DetailsHome";
 
 export { AdminScreen } from "./admin/AdminScreen";
 export { CheckoutScreen } from "./checkoutScreen/CheckoutScreen";
@@ -9,7 +10,6 @@ export { HomeScreen } from "./homeScreen/HomeScreen";
 export { ProductoScreen } from "./productoScreen/ProductoScreen";
 export { SpeakersScreen } from "./speakersScreen/SpeakersScreen";
 export { DetailsSpeakers } from "./speakersScreen/DetailsSpeakers";
-
 
 
 
