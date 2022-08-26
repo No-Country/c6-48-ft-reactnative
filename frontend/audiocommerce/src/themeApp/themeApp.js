@@ -5,6 +5,7 @@ export const themeApp = StyleSheet.create({
     colorSecundary: '#F1F1F1',
     colorBlack: '#101010',
     colorWhite: '#fff',
+    colorGrayDark: '#808080',
     widthStd: 430,
     heightStd: 750,
     titleStd: {
