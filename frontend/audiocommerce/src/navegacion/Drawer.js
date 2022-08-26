@@ -1,13 +1,14 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent, HeaderApp } from '../components';
-import { CheckoutScreen, HomeScreen, ProductoScreen } from '../screens';
+import { CheckoutScreen, ProductoScreen } from '../screens';
 import { StackHeadphones, StackSpeakers, StackEarphones, StackAdmin } from './';
-
+import { StackHome } from './StackHome';
 
 const Drawer = createDrawerNavigator();
 
 export const MenuDrawer = () => {
+
 	return (
 		<Drawer.Navigator
 			screenOptions={{
@@ -24,7 +25,7 @@ export const MenuDrawer = () => {
 			}}
 			drawerContent={(props) => <DrawerContent {...props} />}
 		>
-			<Drawer.Screen name="Home" component={HomeScreen} />
+			<Drawer.Screen name="Home" component={StackHome} />
 			<Drawer.Screen name="Headphones" component={StackHeadphones} />
 			<Drawer.Screen name="Speakers" component={StackSpeakers} />
 			<Drawer.Screen name="Earphones" component={StackEarphones} />
