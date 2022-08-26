@@ -22,6 +22,7 @@ export const HeadphonesScreen = ({ navigation }) => {
 				keyExtractor={item => item._id}
 				onRefresh={ ()=> getData(setRefreshing) }
 				refreshing={ refreshing }
+				ListFooterComponent={<FooterScreen {...navigation}/>}
 			/>
 
 	)

@@ -21,8 +21,9 @@ export const EarphonesScreen = React.memo(({ navigation }) => {
 			keyExtractor={item => item._id}
 			onRefresh={() => getData(setRefreshing)}
 			refreshing={refreshing}
+			ListFooterComponent={<FooterScreen {...navigation}/>}
 			/>
-			<FooterScreen {...navigation}/>
+			
 			</View>
 	)
 })

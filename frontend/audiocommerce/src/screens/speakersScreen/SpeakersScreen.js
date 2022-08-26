@@ -18,6 +18,7 @@ export const SpeakersScreen = ({ navigation }) => {
 			keyExtractor={item => item._id}
 			onRefresh={() => getData(setRefreshing)}
 			refreshing={refreshing}
+			ListFooterComponent={<FooterScreen {...navigation}/>}
 		/>
 	)
 }
