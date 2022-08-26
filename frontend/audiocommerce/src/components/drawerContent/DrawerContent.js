@@ -6,48 +6,23 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { themeApp } from '../../themeApp/themeApp';
 
 export const DrawerContent = ({ navigation }) => {
+ return (
+        <DrawerContentScrollView
+            showsVerticalScrollIndicator={ false }
+        >
 
-    const state = navigation.getState();
+            <View>
+              
+                            <View style={styles.container}>
 
-    return (
-        <DrawerContentScrollView>
-
-            <View style={{ paddingBottom: 50 }}>
-                {
-                    state.routes.map(({ key, name }) => {
-
-                        if (name === 'Checkout') return null;
-                        if (name === 'Home') return null;
-                        if (name === 'ProductoScreen') return null;
-
-                        let iconUrl;
-
-                        switch (name) {
-                            case 'Headphones':
-                                iconUrl = require('../../assets/img/menu/menu-headphone.png');
-                                break;
-                            case 'Speakers':
-                                iconUrl = require('../../assets/img/menu/menu-speakers.png');
-                                break;
-                            case 'Earphones':
-                                iconUrl = require('../../assets/img/menu/menu-earphones.png');
-                                break;
-                            default:
-                                iconUrl = require('../../assets/img/menu/menu-headphone.png')
-                                break;
-                        }
-
-                        return (
-                            <View key={key} style={styles.container}>
-
-                                <ImageIcon iconUrl={iconUrl} />
+                                <ImageIcon iconUrl={require('../../assets/img/menu/menu-headphone.png')} />
 
                                 <TouchableOpacity
-                                    onPress={() => { navigation.navigate(name) }}
+                                    onPress={() => { navigation.navigate('Headphones') }}
                                     style={styles.containerTouchable}
                                 >
                                     <View style={styles.containerText}>
-                                        <Text style={styles.routeName}>{name}</Text>
+                                        <Text style={styles.routeName}>Headphones</Text>
                                         <Text style={styles.textShop}>
                                             SHOP
                                             <Icon name='chevron-forward-outline' size={16} color={themeApp.colorPrimary} />
@@ -55,8 +30,44 @@ export const DrawerContent = ({ navigation }) => {
                                     </View>
                                 </TouchableOpacity>
                             </View>
-                        )
-                    })}
+
+
+                            <View style={styles.container}>
+
+                                <ImageIcon iconUrl={require('../../assets/img/menu/menu-speakers.png')} />
+
+                                <TouchableOpacity
+                                    onPress={() => { navigation.navigate('Speakers') }}
+                                    style={styles.containerTouchable}
+                                >
+                                    <View style={styles.containerText}>
+                                        <Text style={styles.routeName}>Speakers</Text>
+                                        <Text style={styles.textShop}>
+                                            SHOP
+                                            <Icon name='chevron-forward-outline' size={16} color={themeApp.colorPrimary} />
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+
+
+                            <View style={styles.container}>
+
+                                <ImageIcon iconUrl={require('../../assets/img/menu/menu-earphones.png')} />
+
+                                <TouchableOpacity
+                                    onPress={() => { navigation.navigate('Earphones') }}
+                                    style={styles.containerTouchable}
+                                >
+                                    <View style={styles.containerText}>
+                                        <Text style={styles.routeName}>Earphones</Text>
+                                        <Text style={styles.textShop}>
+                                            SHOP
+                                            <Icon name='chevron-forward-outline' size={16} color={themeApp.colorPrimary} />
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
             </View>
         </DrawerContentScrollView>
     )
@@ -74,7 +85,8 @@ const styles = StyleSheet.create({
         height: 200,
         width: themeApp.widthStd,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: -50
     },
     containerText: {
         justifyContent: 'space-evenly',
