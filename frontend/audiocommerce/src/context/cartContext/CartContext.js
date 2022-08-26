@@ -19,13 +19,55 @@ export const CartProvider = ({ children })=>{
             type: 'showCart',
             payload: show
         })
+    };
+
+    const removeProductToCart = (id) =>{
+
+        dispatch({
+            type:'removeProduct',
+            payload: {
+                id
+            }
+        })
+    }
+
+    const addProductToCart = ( product, amount )=>{
+        dispatch({
+            type:'addProductToCart',
+            payload:{
+                product,
+                amount
+            }
+        })
+    }
+
+    const changeAmountItems = (id, newAmount )=>{
+
+        dispatch({
+            type: 'changeAmount',
+            payload:{
+                id,
+                amount: newAmount
+            }
+        })
+
+    }
+
+    const removeAllItems = ()=>{
+        dispatch({
+            type: 'removeAll'
+        })
     }
 
     return(
         <CartContext.Provider
             value={{
                 cartState,
-                setShowCart
+                setShowCart,
+                addProductToCart,
+                removeProductToCart,
+                changeAmountItems,
+                removeAllItems
             }}
         >
             {children}
