@@ -1,18 +1,20 @@
 import React, { useContext } from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '../buttons/ButtonSeeProduct'
 
 export const ProductCard = ({ product, navigation, screenDetails }) => {
 
-    const {addProductDetails} = useContext(ProductContext);
     
     return (
         <View style={styles.container}>
             <View style={{ alignItems: 'center' }}>
 
-                <View style={styles.containerImage}>
+                <TouchableOpacity style={styles.containerImage}
+                    onPress={()=>  navigation.navigate(screenDetails, { product }) }
+                >
+
                     <Image
                         source={{uri: product.img}}
                         style={styles.image}
@@ -21,7 +23,7 @@ export const ProductCard = ({ product, navigation, screenDetails }) => {
                         source={require('../../assets/img/otros/sombra.png')}
                         style={styles.sombra}
                     />
-                </View>
+                </TouchableOpacity>
                 <View style={styles.center}>
                     {
                         product.isNewProduct && <Text style={styles.isNewProduct}>NEW PRODUCT</Text>
@@ -31,8 +33,7 @@ export const ProductCard = ({ product, navigation, screenDetails }) => {
                     <Text style={styles.description}>{product.description}</Text>
                 </View>
                 <ButtonSeeProduct onPress={() => {
-                    navigation.navigate(screenDetails)
-                    addProductDetails(product)
+                    navigation.navigate(screenDetails, { product })
                 }}
                     backgroundColor={themeApp.colorPrimary}
                     containerStyle={{marginTop: 15}}
