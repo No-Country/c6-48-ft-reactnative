@@ -2,6 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import { FlatList } from 'react-native';
 import { ProductCard } from '../../components/cards/ProductCard';
 import { ProductContext } from '../../context/productContext/ProductContext';
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
 
 
 

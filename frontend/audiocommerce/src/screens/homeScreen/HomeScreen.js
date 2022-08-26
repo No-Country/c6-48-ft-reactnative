@@ -3,11 +3,10 @@ import { Button } from 'react-native';
 import { DrawerContent, Loading, OrangeCard, BlackCard, GrayCard } from '../../components';
 import { PullToRefresh } from '../../components/loading/PullToRefresh';
 import { ProductContext } from '../../context/productContext/ProductContext';
-
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
 export const HomeScreen = ({ navigation }) => {
 
 	const { productState, getData } = useContext(ProductContext);
-
 
 	useEffect(() => {
 		getData()
@@ -34,6 +33,7 @@ export const HomeScreen = ({ navigation }) => {
 			<OrangeCard product={products[6]} screenDetails={'DetailsHome'} />
 
 			<GrayCard product={products[9]} screenDetails={'DetailsHome'} />
+			<FooterScreen {...navigation}/>
 
 
 		</PullToRefresh>

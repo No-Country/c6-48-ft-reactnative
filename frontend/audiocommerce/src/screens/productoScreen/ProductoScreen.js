@@ -6,6 +6,7 @@ import { themeApp } from '../../themeApp/themeApp';
 import { convertToCurrency } from '../../helpers/converToCurrency'
 import { ButtonAddProductCart } from '../../components/buttons/ButtonAddProductCart';
 import { CartContext } from '../../context/cartContext/CartContext';
+import {FooterScreen} from '../footerScreen/FooterScreen.js'
 
 export const ProductoScreen = ({ product }) => {
 
@@ -68,8 +69,8 @@ export const ProductoScreen = ({ product }) => {
 
 					<Text style={styles.text}>{product.features}</Text>
 				</View>
-
 			</View>
+			<FooterScreen {...navigation}/>
 		</ScrollView>
 	)
 }
