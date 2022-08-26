@@ -1,24 +1,24 @@
-import React, { useContext } from 'react';
-import { ScrollView } from 'react-native';
+import React, { useContext, useMemo, useState } from 'react';
+import { FlatList, View } from 'react-native';
 import { ProductCard } from '../../components/cards/ProductCard';
-import { PullToRefresh } from '../../components/loading/PullToRefresh';
 import { ProductContext } from '../../context/productContext/ProductContext';
+import { themeApp } from '../../themeApp/themeApp';
 
-export const EarphonesScreen = ({ navigation }) => {
+export const EarphonesScreen = React.memo(({ navigation }) => {
 
 	const { productState, getData } = useContext(ProductContext);
 
-	const {products} = productState;
+	const [refreshing, setRefreshing] = useState(false);
 
-	const earphones = products.filter( product => product.category === 'earphones');
-	return (	
-		<PullToRefresh onRefresh={ getData }>
-			{
-				earphones.map( product =>(
-					<ProductCard product={product} navigation={navigation} key={product._id} screenDetails={'DetailsEarphones'}/>
-				))
-			}
-		</PullToRefresh>
+	const earphones = useMemo(() => productState.products.filter(product => product.category === 'earphones'), [productState.products]);
 
+	return (
+		<FlatList
+			data={earphones}
+			renderItem={({ item }) => <ProductCard product={item} navigation={navigation} screenDetails={'DetailsEarphones'} />}
+			keyExtractor={item => item._id}
+			onRefresh={() => getData(setRefreshing)}
+			refreshing={refreshing}
+		/>
 	)
-}
+})
