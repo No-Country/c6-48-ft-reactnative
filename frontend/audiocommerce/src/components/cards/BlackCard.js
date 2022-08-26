@@ -3,11 +3,14 @@ import { Image, Text, View } from 'react-native'
 import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '..';
 import { ProductContext } from '../../context/productContext/ProductContext';
+import { useNavigation } from '@react-navigation/native';
 
-export const BlackCard = ({ product, navigation }) => {
+export const BlackCard = React.memo(({ product, screenDetails }) => {
 
+    const navigation = useNavigation();
+    
     const { addProductDetails } = useContext(ProductContext);
-
+    
     return (
 
         <View style={{ height: themeApp.heightStd, backgroundColor: themeApp.colorBlack, justifyContent: 'center', alignItems: 'center' }}>
@@ -41,8 +44,7 @@ export const BlackCard = ({ product, navigation }) => {
                 </Text>
 
                 <ButtonSeeProduct onPress={() => {
-                    navigation.navigate('ProductoScreen')
-                    addProductDetails(product)
+                    navigation.navigate(screenDetails, { product })
                 }} 
                     backgroundColor={themeApp.colorPrimary}
                 />
@@ -51,4 +53,4 @@ export const BlackCard = ({ product, navigation }) => {
 
         </View>
     )
-}
+})

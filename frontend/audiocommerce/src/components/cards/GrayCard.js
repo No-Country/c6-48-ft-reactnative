@@ -1,15 +1,17 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useContext } from 'react'
-import { Image, ImageBackground, Text, View } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '../buttons/ButtonSeeProduct'
 
-export const GrayCard = ({ product, navigation }) => {
+export const GrayCard = React.memo(({ product, screenDetails }) => {
 
+    const navigation = useNavigation();
 
     const { addProductDetails } = useContext(ProductContext);
-
-    return (
+    
+    return (    
         <View
             style={{
                 alignItems: 'center',
@@ -73,8 +75,8 @@ export const GrayCard = ({ product, navigation }) => {
                         >{product.title}</Text>
                     <ButtonSeeProduct
                         onPress={() => {
-                            navigation.navigate('ProductoScreen')
-                            addProductDetails(product)
+                            navigation.navigate(screenDetails, { product })
+
                         }}
                         textStyle={{ color: themeApp.colorBlack }}
                         containerStyle={{ borderWidth: 2, borderColor: themeApp.colorBlack, backgroundColor: 'white' }}
@@ -84,4 +86,4 @@ export const GrayCard = ({ product, navigation }) => {
             </View>
         </View>
     )
-}
+})

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useContext } from 'react'
 import { Image, Text, View } from 'react-native'
 import { ProductContext } from '../../context/productContext/ProductContext'
@@ -5,8 +6,9 @@ import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '../buttons/ButtonSeeProduct'
 import { ImageCirc } from '../images/ImageCirc'
 
-export const OrangeCard = ({ product, navigation }) => {
+export const OrangeCard = React.memo(({ product, screenDetails }) => {
 
+    const navigation = useNavigation();
 
     const { addProductDetails } = useContext(ProductContext);
 
@@ -33,8 +35,7 @@ export const OrangeCard = ({ product, navigation }) => {
                 <Text style={[themeApp.descriptionStd, { color: 'white', marginBottom: 20 }]}>{product.description}</Text>
                 <ButtonSeeProduct
                     onPress={() => {
-                        navigation.navigate('ProductoScreen')
-                        addProductDetails(product)
+                        navigation.navigate(screenDetails, { product })
                     }} 
                     containerStyle={{ backgroundColor: themeApp.colorBlack}}
                 />
@@ -43,3 +44,4 @@ export const OrangeCard = ({ product, navigation }) => {
         </View>
     )
 }
+)
