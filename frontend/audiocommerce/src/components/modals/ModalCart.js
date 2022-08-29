@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo } from 'react'
-import { Image, Modal, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, useWindowDimensions, View } from 'react-native'
+import { FlatList, Image, Modal, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { convertToCurrency } from '../../helpers/converToCurrency';
@@ -64,10 +64,7 @@ export const ModalCart = () => {
 
 						{
 							theCartHaveProducts && (<TouchableOpacity
-								onPress={() => {
-									removeAllItems()
-									setShowCart(!cartState.showCart)
-								}}
+								onPress={() => removeAllItems()}
 							>
 								<Text style={style.textRemoveAll}>Remove all</Text>
 							</TouchableOpacity>)
@@ -76,13 +73,12 @@ export const ModalCart = () => {
 					</View>
 
 					{/* Items */}
-					<ScrollView
-						showsVerticalScrollIndicator={false}
-					>
-						{
-							products.map((product) => (<ModalItem product={product} key={product._id} />))
-						}
-					</ScrollView>
+
+					<FlatList 
+						data={ products }
+						renderItem={ ({item})=> <ModalItem product={ item } /> }
+						keyExtractor={ item => item._id}
+					/>
 
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
 						<Text style={{ color: themeApp.colorGrayDark, fontSize: 20 }}>TOTAL</Text>
