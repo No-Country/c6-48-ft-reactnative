@@ -11,7 +11,7 @@ export const HeaderApp = ({ navigation }) => {
     const { cartState } = useContext(CartContext);
 
     const [showCart, setShowCart] = useState(false)
-    
+
     return (
         <View
             style={styles.headerContainer}>
@@ -33,7 +33,7 @@ export const HeaderApp = ({ navigation }) => {
             <View style={styles.containerHomeCart} >
 
                 <TouchableOpacity
-                    onPress={() =>{ navigation.navigate('Home')}}
+                    onPress={() => { navigation.navigate('Home') }}
                 >
                     <Icon name='home-outline' size={26} color={themeApp.colorWhite} />
                 </TouchableOpacity>
@@ -50,7 +50,7 @@ export const HeaderApp = ({ navigation }) => {
 
                 }
             </View>
-            <ModalCart show={showCart} setShowCart={ setShowCart }/>
+            <ModalCart show={showCart} setShowCart={setShowCart} />
         </View>
     )
 }
@@ -86,6 +86,17 @@ const styles = StyleSheet.create({
         marginLeft: 0,
         paddingRight: 10
     },
-    containerNumberItems: { position: 'absolute', top: -10, right: 9 },
+    containerNumberItems: {
+        position: 'absolute',
+        top: -17,
+        right: 3,
+        // backgroundColor: 'white',
+        width: 22,
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 2,
+        borderColor:'red'
+    },
     textNumberItems: { color: 'red', fontWeight: 'bold' }
 })
