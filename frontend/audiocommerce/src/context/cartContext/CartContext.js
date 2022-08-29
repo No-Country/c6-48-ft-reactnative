@@ -10,16 +10,8 @@ export const CartContext = createContext({});
 export const CartProvider = ({ children })=>{
 
     const [ cartState , dispatch] = useReducer(cartReducer, {
-        showCart: false,
         products:[],
     });
-
-    const setShowCart = (show)=>{
-        dispatch({
-            type: 'showCart',
-            payload: show
-        })
-    };
 
     const removeProductToCart = (id) =>{
 
@@ -63,7 +55,6 @@ export const CartProvider = ({ children })=>{
         <CartContext.Provider
             value={{
                 cartState,
-                setShowCart,
                 addProductToCart,
                 removeProductToCart,
                 changeAmountItems,

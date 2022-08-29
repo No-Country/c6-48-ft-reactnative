@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { themeApp } from '../../themeApp/themeApp';
@@ -8,8 +8,9 @@ import { CartContext } from '../../context/cartContext/CartContext';
 export const HeaderApp = ({ navigation }) => {
 
 
-    const { setShowCart, cartState } = useContext(CartContext);
+    const { cartState } = useContext(CartContext);
 
+    const [showCart, setShowCart] = useState(false)
     
     return (
         <View
@@ -41,7 +42,7 @@ export const HeaderApp = ({ navigation }) => {
                 {
 
                     (cartState.products.length >= 1) && (<TouchableOpacity
-                        onPress={() => setShowCart(!cartState.showCart)}
+                        onPress={() => setShowCart(true)}
                     >
                         <View style={styles.containerNumberItems}><Text style={styles.textNumberItems}>{cartState.products.length}</Text></View>
                         <Icon name='cart-outline' size={30} color={themeApp.colorWhite} />
@@ -49,7 +50,7 @@ export const HeaderApp = ({ navigation }) => {
 
                 }
             </View>
-            <ModalCart />
+            <ModalCart show={showCart} setShowCart={ setShowCart }/>
         </View>
     )
 }

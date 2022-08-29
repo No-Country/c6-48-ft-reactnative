@@ -7,9 +7,9 @@ import { getTotalsToPay } from '../../helpers/getTotalsToPay';
 import { themeApp } from '../../themeApp/themeApp';
 import { ModalItem } from './ModalItem';
 
-export const ModalCart = () => {
+export const ModalCart = ({show, setShowCart}) => {
 
-	const { cartState, setShowCart, removeAllItems } = useContext(CartContext);
+	const { cartState, removeAllItems } = useContext(CartContext);
 
 	const { products } = cartState;
 
@@ -28,7 +28,7 @@ export const ModalCart = () => {
 
 	return (
 		<Modal
-			visible={cartState.showCart}
+			visible={show}
 			animationType='fade'
 			transparent
 		>
@@ -51,7 +51,7 @@ export const ModalCart = () => {
 
 					<TouchableOpacity
 						style={style.buttonClose}
-						onPress={() => setShowCart(!cartState.showCart)}
+						onPress={() => setShowCart( false )}
 						activeOpacity={1}
 					>
 						<Icon name='close-circle-outline' size={35} color='#000' />
