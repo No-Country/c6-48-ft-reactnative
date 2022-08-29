@@ -1,14 +1,10 @@
 import React from 'react';
-import { Text, View, Button, Linking, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import { themeApp } from '../../themeApp/themeApp';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { themeApp } from '../../themeApp/themeApp';
 
 export const FooterScreen = (navigate) => {
-    const state = navigate.getState();
 
-     //-->> no haria falta si pasamos el estado de la navegacion como parameter
-     //console.log("arreglooooooACAPA:", state.routes)
-     console.log("arreglooooooACAPAPERO CAMBIADO:", navigate)
     return (
     <View style={styles.container}>
             <View style= {styles.lineOrange}></View>
@@ -61,7 +57,7 @@ export const FooterScreen = (navigate) => {
        <View style= {{alignItems: "center",}}>
         
          <Text style= {styles.BigText}>
-            Audiophile is an all in one stop to fulfill your audio needs. we are a small team of music lovers and sound specialist who are devoted to helping you get the most out of personal
+            AudioCommerce is an all in one stop to fulfill your audio needs. we are a small team of music lovers and sound specialist who are devoted to helping you get the most out of personal
             audio. Come and visit our demo facility - we are open 7 days a week
          </Text>
 
@@ -100,7 +96,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         height: 3,
         width: 210,
-        backgroundColor: '#D87D4A',
+        backgroundColor: themeApp.colorPrimary,
     },
     BigText: {
         margin: 15,
