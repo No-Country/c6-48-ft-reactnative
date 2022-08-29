@@ -6,56 +6,77 @@ import Icon from 'react-native-vector-icons/Ionicons';
 export const FooterScreen = (navigate) => {
     const state = navigate.getState();
 
-    //-->> no haria falta si pasamos el estado de la navegacion como parameter
-    //console.log("arreglooooooACAPA:", state.routes)
-    console.log("arreglooooooACAPAPERO CAMBIADO:", navigate)
+     //-->> no haria falta si pasamos el estado de la navegacion como parameter
+     //console.log("arreglooooooACAPA:", state.routes)
+     console.log("arreglooooooACAPAPERO CAMBIADO:", navigate)
     return (
-        <View style={styles.container}>
-            <View style={styles.lineOrange}></View>
-            <View>
-                <Text style={styles.headerText}>AudioCommerce</Text>
-            </View>
+    <View style={styles.container}>
+            <View style= {styles.lineOrange}></View>
+        <View>
+           <Text style= {styles.headerText}>AudioCommerce</Text>
+       </View>
 
-            <View style={styles.buttons}>
-                {
-                    state.routes.map(({ key, name }) => {
-                        if (name === 'Checkout') return null;
-                        if (name === 'ProductoScreen') return null;
-                        if (name === 'Footer') return null;
+       <View style= {styles.buttons}>
+       <View  style={styles.container2AndTouchable}>
 
-                        return (
-                            <View key={key} style={styles.container2}>
-                                <TouchableOpacity
-                                    onPress={() => { navigate.navigate(name) }}
-                                >
-                                    <View>
-                                        <Text style={{ color: "#fff" }}>{name.toUpperCase()}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    })}
-            </View>
-
-            <View style={{ alignItems: "center", }}>
-
-                <Text style={styles.BigText}>
-                    Audiophile is an all in one stop to fulfill your audio needs. we are a small team of music lovers and sound specialist who are devoted to helping you get the most out of personal
-                    audio. Come and visit our demo facility - we are open 7 days a week
-                </Text>
-
-                <Text style={styles.BigText}>
-                    Copyright 2022. Al Rights Reserved
-                </Text>
-
-                <View style={styles.icons}>
-                    <Icon name="logo-facebook" style={{ margin: 10, }} size={30} color={themeApp.colorWhite}></Icon>
-                    <Icon name="logo-twitter" style={{ margin: 10, }} size={30} color={themeApp.colorWhite}></Icon>
-                    <Icon name="logo-instagram" style={{ margin: 10, }} size={30} color={themeApp.colorWhite}></Icon>
+             <TouchableOpacity
+             onPress={() => { navigate.navigate('Home') }}
+             style={styles.container2AndTouchable}
+            >
+                <View>
+                  <Text style= {{color: "#fff"}}>HOME</Text>
                 </View>
-            </View>
-        </View>
-    )
+            </TouchableOpacity>
+
+            <TouchableOpacity
+             onPress={() => { navigate.navigate('Headphones') }}
+             style={styles.container2AndTouchable}
+            >
+                <View>
+                   <Text style= {{color: "#fff"}}>HEADPHONES</Text>
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+             onPress={() => { navigate.navigate('Speakers') }}
+             style={styles.container2AndTouchable}
+            >
+                 <View>
+                   <Text style= {{color: "#fff"}}>SPEAKERS</Text>
+                 </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+             onPress={() => { navigate.navigate('Earphones') }}
+             style={styles.container2AndTouchable}
+            >
+                 <View>
+                   <Text style= {{color: "#fff"}}>EARPHONES</Text>
+                 </View>
+            </TouchableOpacity>
+            
+       </View>
+       </View>
+
+       <View style= {{alignItems: "center",}}>
+        
+         <Text style= {styles.BigText}>
+            Audiophile is an all in one stop to fulfill your audio needs. we are a small team of music lovers and sound specialist who are devoted to helping you get the most out of personal
+            audio. Come and visit our demo facility - we are open 7 days a week
+         </Text>
+
+         <Text style= {styles.BigText}>
+             Copyright 2022. Al Rights Reserved 
+         </Text>
+
+         <View style= {styles.icons}>
+            <Icon name="logo-facebook" style= {{margin: 10,}}size={30} color={ themeApp.colorWhite }></Icon>
+            <Icon name="logo-twitter" style= {{margin: 10,}} size={30} color={ themeApp.colorWhite }></Icon>
+            <Icon name="logo-instagram" style= {{margin: 10,}} size={30} color={ themeApp.colorWhite }></Icon>
+         </View>
+       </View>
+</View>
+	)
 }
 
 const styles = StyleSheet.create({
@@ -64,7 +85,7 @@ const styles = StyleSheet.create({
         backgroundColor: themeApp.colorBlack,
         alignItems: "center",
     },
-    container2: {
+    container2AndTouchable: {
         alignItems: 'center',
         margin: 15,
         alignItems: "center",
@@ -85,7 +106,7 @@ const styles = StyleSheet.create({
         margin: 15,
         color: '#6F6968',
         textAlign: 'center',
-        fontSize: 19,
+        fontSize: 19, 
     },
     buttons: {
         marginTop: 40,
