@@ -14,7 +14,7 @@ class Server {
         this.conectarDB();
 
         //rutas
-        this.pathUsuarios = '/api/usuarios';
+        this.pathOrders = '/api/orders';
         this.pathProductos = '/api/productos';
         this.pathUploads = '/api/uploads';
         
@@ -43,7 +43,7 @@ class Server {
 
     routes (){
 
-        this.app.use( this.pathUsuarios , require('../routers/usuarios'))
+        this.app.use( this.pathOrders , require('../routers/orders'))
         this.app.use( this.pathProductos , require('../routers/productos'))
         this.app.use( this.pathUploads , require('../routers/uploads'))
     }
