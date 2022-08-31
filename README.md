@@ -12,7 +12,7 @@
 
 ## Puntos del Ecommerce
 
-- [ ] El usuario puede ver todos los productos y filtrarlos por categorías
+- [ ] El usuario puede ver los productos filtrarlos por categorías
 - [ ] El usuario tiene un carrito de compra
 - [ ] El usuario puede agragar productos a un carrito de compras
 - [ ] El usuario puede realizar una orden de compra
