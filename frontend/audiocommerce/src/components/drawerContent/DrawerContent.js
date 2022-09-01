@@ -68,6 +68,7 @@ export const DrawerContent = ({ navigation }) => {
                                     </View>
                                 </TouchableOpacity>
                             </View>
+                            
             </View>
         </DrawerContentScrollView>
     )

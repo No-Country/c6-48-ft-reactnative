@@ -4,6 +4,9 @@ import { DrawerContent, HeaderApp } from '../components';
 import { CheckoutScreen, ProductoScreen } from '../screens';
 import { StackHeadphones, StackSpeakers, StackEarphones, StackAdmin } from './';
 import { StackHome } from './StackHome';
+import {ModalCartForSummary} from '../components/modals/ModalCartForSummary.js'
+import {ModalCart} from '../components/modals/ModalCart'
+
 
 const Drawer = createDrawerNavigator();
 
@@ -32,6 +35,8 @@ export const MenuDrawer = () => {
 			<Drawer.Screen name="Checkout" component={CheckoutScreen} />
 			<Drawer.Screen name="ProductoScreen" component={ProductoScreen} />
 			<Drawer.Screen name="StackAdmin" component={StackAdmin} />
+
+
 		</Drawer.Navigator>
 	);
 }

@@ -1,15 +1,18 @@
 import React, { useContext, useEffect, useMemo } from 'react'
-import { FlatList, Image, Modal, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, useWindowDimensions, View } from 'react-native'
+import { Image, Modal, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { convertToCurrency } from '../../helpers/converToCurrency';
 import { getTotalsToPay } from '../../helpers/getTotalsToPay';
 import { themeApp } from '../../themeApp/themeApp';
 import { ModalItem } from './ModalItem';
+import { useNavigation } from '@react-navigation/native';
 
-export const ModalCart = ({show, setShowCart}) => {
 
-	const { cartState, removeAllItems } = useContext(CartContext);
+export const ModalCart = () => {
+	const navigation = useNavigation();
+
+	const { cartState, setShowCart, removeAllItems } = useContext(CartContext);
 
 	const { products } = cartState;
 
@@ -28,7 +31,7 @@ export const ModalCart = ({show, setShowCart}) => {
 
 	return (
 		<Modal
-			visible={show}
+			visible={cartState.showCart}
 			animationType='fade'
 			transparent
 		>
@@ -51,7 +54,7 @@ export const ModalCart = ({show, setShowCart}) => {
 
 					<TouchableOpacity
 						style={style.buttonClose}
-						onPress={() => setShowCart( false )}
+						onPress={() => setShowCart(!cartState.showCart)}
 						activeOpacity={1}
 					>
 						<Icon name='close-circle-outline' size={35} color='#000' />
@@ -64,7 +67,10 @@ export const ModalCart = ({show, setShowCart}) => {
 
 						{
 							theCartHaveProducts && (<TouchableOpacity
-								onPress={() => removeAllItems()}
+								onPress={() => {
+									removeAllItems()
+									setShowCart(!cartState.showCart)
+								}}
 							>
 								<Text style={style.textRemoveAll}>Remove all</Text>
 							</TouchableOpacity>)
@@ -73,12 +79,13 @@ export const ModalCart = ({show, setShowCart}) => {
 					</View>
 
 					{/* Items */}
-
-					<FlatList 
-						data={ products }
-						renderItem={ ({item})=> <ModalItem product={ item } /> }
-						keyExtractor={ item => item._id}
-					/>
+					<ScrollView
+						showsVerticalScrollIndicator={false}
+					>
+						{
+							products.map((product) => (<ModalItem product={product} key={product._id} />))
+						}
+					</ScrollView>
 
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
 						<Text style={{ color: themeApp.colorGrayDark, fontSize: 20 }}>TOTAL</Text>
@@ -88,6 +95,7 @@ export const ModalCart = ({show, setShowCart}) => {
 					<TouchableOpacity
 						style={theCartHaveProducts ? style.buttonCheckout : style.buttonCheckoutDisabled}
 						disabled={!theCartHaveProducts}
+						onPress= {() => {navigation.navigate("Checkout"); setShowCart(!cartState.showCart)}}
 					>
 						<Text style={[style.textCheckout, !theCartHaveProducts && { color: 'black' }]}>CHECKOUT</Text>
 					</TouchableOpacity>
