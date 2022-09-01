@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp';
@@ -8,9 +8,13 @@ import { ButtonAddProductCart } from '../../components/buttons/ButtonAddProductC
 import { CartContext } from '../../context/cartContext/CartContext';
 import {FooterScreen} from '../footerScreen/FooterScreen.js'
 
+
+
 export const ProductoScreen = ({ product }) => {
 
-
+	const WIDTH = useWindowDimensions().width;
+	console.log(WIDTH)
+	
 	const { products } = useContext(CartContext).cartState;
 
 	const thisProductIsInCart = products.some(productCart => productCart._id === product._id);
@@ -22,7 +26,7 @@ export const ProductoScreen = ({ product }) => {
 
 			<View style={styles.container}>
 
-				<View style={styles.containerProduct}>
+				<View style={[{ width : WIDTH *.9},  styles.containerProduct]}>
 
 					<TouchableOpacity
 						style={styles.buttonGoBack}
@@ -34,9 +38,9 @@ export const ProductoScreen = ({ product }) => {
 
 				</View>
 
-				<View style={styles.containerImage}>
+				<View style={[{ width: WIDTH *.9, height: WIDTH*.9}, styles.containerImage ]}>
 
-					<Image source={{ uri: product.img }} style={styles.image} />
+					<Image source={{ uri: product.img }} style={[styles.image, { width: WIDTH*.7, height: WIDTH*.7}]} />
 
 				</View>
 
@@ -78,10 +82,12 @@ export const ProductoScreen = ({ product }) => {
 
 const styles = StyleSheet.create({
 	container: {
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingHorizontal: 20,
+		paddingBottom: 20
 	},
 	containerProduct: {
-		width: 430
+		maxWidth: 430
 	},
 	containerProdInCart: {
 		height: 70,
@@ -103,15 +109,15 @@ const styles = StyleSheet.create({
 	containerImage: {
 		backgroundColor: themeApp.colorSecundary,
 		borderRadius: 10,
-		width: 430,
-		height: 430,
+		maxWidth: 430,
+		maxHeight: 430,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	image: {
 		resizeMode: 'contain',
-		width: 350,
-		height: 350
+		maxWidth: 350,
+		maxHeight: 350
 	},
 	text: {
 		fontSize: 20,

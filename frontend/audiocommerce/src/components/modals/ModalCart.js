@@ -17,7 +17,7 @@ export const ModalCart = ({show, setShowCart}) => {
 	
 	const theCartHaveProducts = (products.length > 0);
 
-	const HEIGHT  = useWindowDimensions().height ;
+	const {height, width}  = useWindowDimensions();
 
 	useEffect(() => {
 	  if(products.length === 0) {
@@ -41,8 +41,9 @@ export const ModalCart = ({show, setShowCart}) => {
 			}}>
 
 				<View style={{
-					width: themeApp.widthStd,
-					height: HEIGHT * .8 ,
+					width: width*.9,
+					maxWidth: themeApp.widthStd,
+					height: height * .8 ,
 					backgroundColor: themeApp.colorWhite,
 					borderRadius: 10,
 					padding: 30
