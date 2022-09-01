@@ -13,7 +13,6 @@ import {FooterScreen} from '../footerScreen/FooterScreen.js'
 export const ProductoScreen = ({ product }) => {
 
 	const WIDTH = useWindowDimensions().width;
-	console.log(WIDTH)
 	
 	const { products } = useContext(CartContext).cartState;
 
