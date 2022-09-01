@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useContext } from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, Text, useWindowDimensions, View } from 'react-native'
 import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '../buttons/ButtonSeeProduct'
@@ -10,7 +10,7 @@ export const GrayCard = React.memo(({ product, screenDetails }) => {
     const navigation = useNavigation();
 
     const { addProductDetails } = useContext(ProductContext);
-    
+    const {width} = useWindowDimensions();
     return (    
         <View
             style={{
@@ -22,7 +22,8 @@ export const GrayCard = React.memo(({ product, screenDetails }) => {
 
             <View
                 style={{
-                    width: themeApp.widthStd,
+                    width: width*.9,
+                    maxWidth: themeApp.widthStd,
                     height: themeApp.heightStd * 0.6,
                     borderColor: '#dcdcdc',
                     borderRadius: 10,
