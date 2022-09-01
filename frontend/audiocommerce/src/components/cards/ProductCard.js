@@ -1,23 +1,24 @@
 import React, { useContext } from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import { ProductContext } from '../../context/productContext/ProductContext'
 import { themeApp } from '../../themeApp/themeApp'
 import { ButtonSeeProduct } from '../buttons/ButtonSeeProduct'
 
 export const ProductCard = ({ product, navigation, screenDetails }) => {
 
-    
+    const {width} = useWindowDimensions();
+
     return (
         <View style={styles.container}>
-            <View style={{ alignItems: 'center' }}>
+            <View style={{ alignItems: 'center', width, maxWidth: themeApp.widthStd }}>
 
-                <TouchableOpacity style={styles.containerImage}
+                <TouchableOpacity style={[{ width: width*.9},styles.containerImage]}
                     onPress={()=>  navigation.navigate(screenDetails, { product }) }
                 >
 
                     <Image
                         source={{uri: product.img}}
-                        style={styles.image}
+                        style={[{ width: width*.7, height: width*.7},styles.image]}
                     />
                     <Image
                         source={require('../../assets/img/otros/sombra.png')}
@@ -47,22 +48,22 @@ export const ProductCard = ({ product, navigation, screenDetails }) => {
 const styles = StyleSheet.create({
     container: {
         marginVertical: 40,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        alignItems: 'center'
     },
     containerImage: {
         backgroundColor: '#f1f1f1',
-        width: '85%',
+        maxWidth: 430,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
         height: 500
     },
     image: {
-        resizeMode: 'contain',
-        width: '100%',
-        height: 300,
-        zIndex: 20
-    },
+		resizeMode: 'contain',
+		maxWidth: 350,
+		maxHeight: 350
+	},
     center: {
         alignItems: 'center',
         justifyContent: 'center'

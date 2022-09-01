@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { convertToCurrency } from '../../helpers/converToCurrency'
@@ -11,6 +11,7 @@ export const ModalItem = ({ product }) => {
 
     const [counter, setCounter] = useState(product.amount);
 
+    const {width, height} = useWindowDimensions();
     useEffect(() => {
         changeAmountItems(product._id, counter)
     }, [counter])
@@ -18,7 +19,7 @@ export const ModalItem = ({ product }) => {
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 15 }}>
             {/* Item image */}
-            <View style={{ width: 100, height: 100, backgroundColor: themeApp.colorSecundary, borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ width: width*.2, height: width*.2, maxWidth: 100, maxHeight: 100, backgroundColor: themeApp.colorSecundary, borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
                 {/* button to remove item */}
                 <TouchableOpacity
                     style={style.buttonRemoveItem}
@@ -30,7 +31,7 @@ export const ModalItem = ({ product }) => {
                 </TouchableOpacity>
                 <Image
                     source={{ uri: product.img }}
-                    style={{ width: 80, height: 80, resizeMode: 'contain', borderRadius: 5 }}
+                    style={{ width: width*.15, height: width*.15,maxWidth: 80, maxHeight: 80, resizeMode: 'contain', borderRadius: 5 }}
                 />
 
             </View>
@@ -38,7 +39,8 @@ export const ModalItem = ({ product }) => {
             {/* Item price and title */}
 
             <View style={{
-                width: 155,
+                width: width *.33,
+                maxWidth: 155,
                 paddingHorizontal: 15,
 
             }}>
@@ -59,7 +61,7 @@ export const ModalItem = ({ product }) => {
 
             {/* buttons to add or subtract items*/}
 
-            <View style={{ flexDirection: 'row', flex: 1, height: 40 }}>
+            <View style={{ flexDirection: 'row', flex: 1, height: 40}}>
 
                 <TouchableOpacity
                     onPress={() => setCounter(prev => prev - 1)}
