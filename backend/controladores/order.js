@@ -42,7 +42,7 @@ const postOrder = async (req, res) => {
             name, total,
             shipping,
             vat,
-            grandTotalemail, eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart
+            grandTotal,email, eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart
         })
 
         await order.save();

@@ -70,16 +70,16 @@ export const CartProvider = ({ children })=>{
                 })
             }
             // const order = JSON.stringify(orderData);
-            console.log('order', JSON.stringify(order, null, 2))
-            // try {
+            console.log(order)
+            try {
                 
-            //     const resp = await apiDB.post('/orders', order );
+                const {data} = await apiDB.post('/orders', order );
     
-            //     console.log('data cash', JSON.stringify(resp, null, 2))
-            // } catch (error) {
+                console.log('data cash', JSON.stringify(data, null, 2))
+            } catch (error) {
     
-            //     console.log('error', JSON.stringify(error.response, null, 2))
-            // }
+                console.log('error', JSON.stringify(error.response, null, 2))
+            }
         } else {
 
 
@@ -96,12 +96,12 @@ export const CartProvider = ({ children })=>{
             console.log('order', JSON.stringify(order, null, 2))
             try {
                 
-                const resp = await apiDB.post('/orders', order );
+                const { data } = await apiDB.post('/orders', order );
     
-                console.log('data', JSON.stringify(resp, null, 2))
+                console.log('data', JSON.stringify(data, null, 2))
             } catch (error) {
     
-                console.log('error', JSON.stringify(error.response, null, 2))
+                console.log('error', JSON.stringify(error.response.data.error, null, 2))
             }
         }
 

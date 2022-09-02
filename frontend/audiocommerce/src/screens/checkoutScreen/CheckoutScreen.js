@@ -41,7 +41,7 @@ console.log(totales)
 								city: 'cordoba',
 								country: 'argentina',
 								paymentMethod: 'cash',
-								eMoneyNumber: 0,
+								eMoneyNumber: 4242424242424242,
 								eMoneyPin: 0,
 							}}
 							validationSchema={Yup.object().shape({
@@ -65,7 +65,7 @@ console.log(totales)
 									...values,
 									...totales
 								}
-								createOrder(userOrder);
+								createOrder(values);
 							}}
 						>
 
