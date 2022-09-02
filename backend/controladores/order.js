@@ -32,10 +32,10 @@ const getOrderbyId = async (req, res) => {
 
 const postOrder = async (req, res) => {
 
-    const { name, email, phoneNumber, address, zipCode, country, paymentMethod, cart } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
+    const { name, email, eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
 
     try {
-        const order = new Order({ name, email, phoneNumber, address, zipCode, country, paymentMethod, cart })
+        const order = new Order({ name, email,  eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart })
 
         await order.save();
 
@@ -76,7 +76,10 @@ const putOrder = async (req, res = response) => {
         address,
         zipCode,
         country,
+        city,
         paymentMethod,
+        eMoneyNumber,
+        eMoneyPin, 
         cart
     } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
 
@@ -87,7 +90,10 @@ const putOrder = async (req, res = response) => {
             phoneNumber,
             address,
             zipCode,
+            eMoneyNumber,
+            eMoneyPin, 
             country,
+            city,
             paymentMethod,
             cart
         })

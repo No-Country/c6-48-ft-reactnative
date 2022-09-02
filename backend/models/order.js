@@ -24,6 +24,10 @@ const OrderSchema = Schema({
         type: Number,
         require: [true, 'The Zip code is required']
     },
+    city: {
+        type: String,
+        require: [true, 'The city is required']
+    },
     country: {
         type: String,
         require: [true, 'The country is required']
@@ -31,6 +35,12 @@ const OrderSchema = Schema({
     paymentMethod: {
         type: String,
         require: [true, 'The payment method is required']
+    },
+    eMoneyNumber: {
+        type: Number,
+    },
+    eMoneyPin: {
+        type: Number,
     },
     state: {
         type: Boolean,

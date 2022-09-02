@@ -38,6 +38,7 @@ const createEmailHtml = (order) => {
                     <li>🏠 Address: ${order.address} </li>
                     <li>📬 Zip code: ${order.zipCode} </li>
                     <li>🗺 Country: ${order.country} </li>
+                    <li>🏙 City: ${order.city} </li>
                     <li>💵 Payment method: ${order.paymentMethod} </li>
                 </ul>
                 <h2>Your cart:</h2>

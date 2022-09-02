@@ -23,7 +23,9 @@ router.post('/', [
     check('address', 'The address is required').notEmpty(),
     check('zipCode', 'The zipCode is required').notEmpty(),
     check('country', 'The country is required').notEmpty(),
-    check('paymentMethod', 'The paymentMethod is required').notEmpty(),
+    check('city', 'The city is required').notEmpty(),
+    check('eMoneyNumber', 'The eMoneyNumber is not a credit card number').optional().isCreditCard(),
+    check('eMoneyPin', 'The eMoneyPin is not a number').optional().isInt(),
     check('email', 'The email is not valid').isEmail(),
 
     validarCampos
@@ -36,7 +38,10 @@ router.put('/:_id', [
     check('address', 'The address is required').notEmpty(),
     check('zipCode', 'The zipCode is required').notEmpty(),
     check('country', 'The country is required').notEmpty(),
+    check('city', 'The city is required').notEmpty(),
     check('paymentMethod', 'The paymentMethod is required').notEmpty(),
+    check('eMoneyNumber', 'The eMoneyNumber is not a credit card number').optional().isCreditCard(),
+    check('eMoneyPin', 'The eMoneyPin is not a number').optional().isInt(),
     check('email', 'The email is not valid').isEmail(),
     validarCampos
 ], putOrder)
