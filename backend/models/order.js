@@ -39,6 +39,18 @@ const OrderSchema = Schema({
     eMoneyNumber: {
         type: Number,
     },
+   total: {
+        type: Number,
+    },
+    shipping: {
+        type: Number,
+    },
+    vat: {
+        type: Number,
+    },
+    grandTotal: {
+        type: Number,
+    },
     eMoneyPin: {
         type: Number,
     },

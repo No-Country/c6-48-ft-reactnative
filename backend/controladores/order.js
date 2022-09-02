@@ -32,16 +32,24 @@ const getOrderbyId = async (req, res) => {
 
 const postOrder = async (req, res) => {
 
-    const { name, email, eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
+    const { name, email, total,
+        shipping,
+        vat,
+        grandTotal, eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
 
     try {
-        const order = new Order({ name, email,  eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart })
+        const order = new Order({
+            name, total,
+            shipping,
+            vat,
+            grandTotalemail, eMoneyNumber, eMoneyPin, phoneNumber, address, zipCode, country, city, paymentMethod, cart
+        })
 
         await order.save();
 
         await order.populate('cart.item', ['title', 'img', 'price'])
 
-   
+
         const HTML = createEmailHtml(order);
 
 
@@ -79,8 +87,12 @@ const putOrder = async (req, res = response) => {
         city,
         paymentMethod,
         eMoneyNumber,
-        eMoneyPin, 
-        cart
+        eMoneyPin,
+        cart,
+        total,
+        shipping,
+        vat,
+        grandTotal
     } = req.body; //sacando del body solo lo que me interesa para que no puedan enviarme informacion erronea
 
     try {
@@ -91,11 +103,15 @@ const putOrder = async (req, res = response) => {
             address,
             zipCode,
             eMoneyNumber,
-            eMoneyPin, 
+            eMoneyPin,
             country,
             city,
             paymentMethod,
-            cart
+            cart,
+            total,
+            shipping,
+            vat,
+            grandTotal
         })
 
         await order.save();
