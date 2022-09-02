@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo } from 'react'
-import { FlatList, Image, Modal, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, useWindowDimensions, View } from 'react-native'
+import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CartContext } from '../../context/cartContext/CartContext';
 import { convertToCurrency } from '../../helpers/converToCurrency';
@@ -92,7 +92,7 @@ export const ModalCart = ({show, setShowCart}) => {
 					<TouchableOpacity
 						style={theCartHaveProducts ? style.buttonCheckout : style.buttonCheckoutDisabled}
 						disabled={!theCartHaveProducts}
-						onPress= {() => {navigationn.navigate("Checkout"); setShowCart(!cartState.showCart)}}
+						onPress= {() => {navigationn.navigate("Checkout"); setShowCart(false)}}
 
 					>
 						<Text style={[style.textCheckout, !theCartHaveProducts && { color: 'black' }]}>CHECKOUT</Text>
