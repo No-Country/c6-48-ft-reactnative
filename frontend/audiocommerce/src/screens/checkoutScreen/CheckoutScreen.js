@@ -24,25 +24,25 @@ export const CheckoutScreen = ({navigation}) => {
 					<View style= {styles.billing}>
 						<Formik 
 						  initialValues= {{
-							Name: '',
-							EmailAddress: '',
-							numberPhone: '',
-							yourAddress: '',
+							name: '',
+							email: '',
+							phoneNumber: '',
+							address: '',
 							zipCode: '',
 							city: '',
 							country: '',
+							paymentMethod: '',
 							eMoneyNumber: '',
 							eMoneyPin: '',
 						}}
 						validationSchema={Yup.object().shape({
-							Name: Yup.string().min(1, 'Too Short!').max(15, 'Too Long!').required(),
-							EmailAddress: Yup.string().email("Email invalid").required('Required'),
-							numberPhone: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
-							yourAddress: Yup.string().min(2, 'Too Short!').max(30, 'Too Long!').required("Please insert your address"),
+							name: Yup.string().min(1, 'Too Short!').max(15, 'Too Long!').required(),
+							email: Yup.string().email("Email invalid").required('Required'),
+							phoneNumber: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
+							address: Yup.string().min(2, 'Too Short!').max(30, 'Too Long!').required("Please insert your address"),
 							zipCode: Yup.string().required("Please insert your ZIP code"),
 							city: Yup.string().required('Please write your city'),
 							country: Yup.string().required('Please write your country'),
-							category: Yup.string().required('Please write your city'),
 							eMoneyNumber: Yup.number().typeError('must be a number!').required('Please write your card number'),
 							eMoneyPin: Yup.number().typeError('must be a number!').required("Please insert your code security card")
 						})}
@@ -53,61 +53,61 @@ export const CheckoutScreen = ({navigation}) => {
 								
 								<Text style={styles.miniTitles}>Name</Text>
                                   <TextInput
-                                 style={[styles.input, (touched.Name && errors.Name) && styles.error]}
-                                 onBlur={handleBlur('Name')}
+                                 style={[styles.input, (touched.name && errors.name) && styles.error]}
+                                 onBlur={handleBlur('name')}
                                  multiline
-                                 onChangeText={handleChange('Name')}
-                                 value={values.Name}
+                                 onChangeText={handleChange('name')}
+                                 value={values.name}
 								 placeholder="Alex Vigo"
 
                                 />
 
-                        { (errors.Name) && (<Text style={styles.errorInred}>
-                                <ErrorMessage name='Name' />
+                        { (errors.name) && (<Text style={styles.errorInred}>
+                                <ErrorMessage name='name' />
                             </Text>)
                         }
 
 								<Text style= {styles.miniTitles}>Email Address</Text>
 										<TextInput 
-										style= {[styles.input, (touched.EmailAddress && errors.EmailAddress) && styles.error]}
-										onBlur={handleBlur("EmailAddress")}
+										style= {[styles.input, (touched.email && errors.email) && styles.error]}
+										onBlur={handleBlur("email")}
 										multiline
-										onChangeText={handleChange("EmailAddress")}
-										value={values.EmailAddress}
+										onChangeText={handleChange("email")}
+										value={values.email}
 										placeholder="alex@gmail.com"
 										/>
 
-						{ (errors.EmailAddress) && (<Text style={styles.errorInred}>
-									<ErrorMessage name='EmailAddress' />
+						{ (errors.email) && (<Text style={styles.errorInred}>
+									<ErrorMessage name='email' />
                             </Text>)
                         }
 
 								<Text style= {styles.miniTitles}>Number Phone</Text>
 										<TextInput 
-										style= {[styles.input, (touched.numberPhone && errors.numberPhone) && styles.error]}										
-										onBlur={handleBlur("numberPhone")}
-										onChangeText={handleChange("numberPhone")}
-										value={values.numberPhone}
+										style= {[styles.input, (touched.phoneNumber && errors.phoneNumber) && styles.error]}										
+										onBlur={handleBlur("phoneNumber")}
+										onChangeText={handleChange("phoneNumber")}
+										value={values.phoneNumber}
 										placeholder="+541162653092"
 										/>
 
-						{ (errors.numberPhone) && (<Text style={styles.errorInred}>
-									<ErrorMessage name='numberPhone' />
+						{ (errors.phoneNumber) && (<Text style={styles.errorInred}>
+									<ErrorMessage name='phoneNumber' />
                             </Text>)
                         }				
 									
 										<Text style= {styles.text2}>SHIPPING INFO</Text>
 										<Text style= {styles.miniTitles}>Your Address</Text>
 										<TextInput 
-										style= {[styles.input, (touched.yourAddress && errors.yourAddress) && styles.error]}
-										onBlur={handleBlur("yourAddress")}
-										onChangeText={handleChange("yourAddress")}
-										value={values.yourAddress}
+										style= {[styles.input, (touched.address && errors.address) && styles.error]}
+										onBlur={handleBlur("address")}
+										onChangeText={handleChange("address")}
+										value={values.address}
 										placeholder="Carrion 3029"
 										/>
 
-						{ (errors.yourAddress) && (<Text style={styles.errorInred}>
-									<ErrorMessage name='yourAddress' />
+						{ (errors.address) && (<Text style={styles.errorInred}>
+									<ErrorMessage name='address' />
                             </Text>)
                         }		
 
