@@ -227,26 +227,12 @@ console.log(totales)
 										}
 									</View> : null}
 
-									<ModalCartForSummary setTotales={setTotales}/>
-
-
-									<TouchableOpacity
-										style={ styles.buttonCheckoutAble }
-										onPress={()=>{
-											if(theCartHaveProducts){
-												handleSubmit()
-											}else{
-												navigation.navigate('Home')
-											}
-										}}
-									>
-										<Text style={ styles.TextFinal }>{ theCartHaveProducts?  'CONTINUE & PAY' : 'GO TO HOME'}</Text>
-									</TouchableOpacity>
 								</View>
 							)}
 						</Formik>
 					</View>
 				</View>
+				<ModalCartForSummary setTotales={setTotales}/>
 			</View>
 			<FooterScreen style={styles.foot}{...navigation} />
 		</ScrollView>
