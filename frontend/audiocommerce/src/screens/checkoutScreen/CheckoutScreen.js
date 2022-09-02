@@ -221,13 +221,13 @@ export const CheckoutScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
 	conteinerOut: {
-		height: 2450,
+		height: 2500,
 		backgroundColor: '#F7F7F7',
 	},
 
 	conteinerIn: {
 		flex: 1,
-		marginVertical: 40,
+		marginVertical: 10,
 		marginLeft: 20,
 		marginRight: 20,
 		backgroundColor: 'white',
@@ -289,5 +289,6 @@ const styles = StyleSheet.create({
 	},
 	foot: {
 		display: "end",
+		marginTop: 3,
 	}
 })

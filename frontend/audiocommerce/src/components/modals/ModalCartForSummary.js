@@ -46,6 +46,7 @@ export const ModalCartForSummary = () => {
 					height: HEIGHT * .8 ,
 					backgroundColor: themeApp.colorWhite,
 					borderRadius: 10,
+					margin:5,
 					padding: 30
 				}}>
 
@@ -55,6 +56,7 @@ export const ModalCartForSummary = () => {
 					</View>
 
 					{/* Items */}
+					<View style= {{marginTop: 2, marginTop: 2,}}> 
 					<ScrollView
 						showsVerticalScrollIndicator={false}
 					>
@@ -62,6 +64,7 @@ export const ModalCartForSummary = () => {
 							products.map((product) => (<ModalItem product={product} key={product._id} />))
 						}
 					</ScrollView>
+					</View>
 
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
 						<Text style={{ color: '#A3A3A3', fontSize: 20 }}>TOTAL</Text>
