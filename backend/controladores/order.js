@@ -32,6 +32,8 @@ const getOrderbyId = async (req, res) => {
 
 const postOrder = async (req, res) => {
 
+
+    console.log('prueba post order')
     const { name, email, total,
         shipping,
         vat,

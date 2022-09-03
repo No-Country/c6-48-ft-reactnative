@@ -20,16 +20,7 @@ const createEmailHtml = (order) => {
                 `
     }).join();
 
-    console.log(toString(order.eMoneyNumber).length)
 
-    const numberCartHide= order.eMoneyNumber.map( ( number, index ) =>{
-
-        if( index < order.eMoneyNumber.length/2 ){
-            return number
-        } else {
-            return '*'
-        }
-    }).join('');
 
 
 
@@ -45,7 +36,6 @@ const createEmailHtml = (order) => {
                     <li>🗺 Country: ${order.country} </li>
                     <li>🏙 City: ${order.city} </li>
                     <li>💵 Payment method: ${order.paymentMethod} </li>
-                    ${ (order.paymentMethod === 'creditCard') ? (`<li>💳 Cart number: ${numberCartHide}</li>`) : null }
                 </ul>
                 <h3>Your cart:</h3>
                 <div style="width: 80%;  max-width: 300px; background-color: #f1f1f1; border-radius: 10px; padding-top: 20px;">
