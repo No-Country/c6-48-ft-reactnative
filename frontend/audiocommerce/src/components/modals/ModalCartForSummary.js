@@ -1,18 +1,14 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
-import { Image, Modal, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, useWindowDimensions, View } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, { useContext, useMemo } from 'react'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import  {CartContext}  from '../../context/cartContext/CartContext.js';
 import { convertToCurrency } from '../../helpers/converToCurrency';
 import { getTotalsToPay } from '../../helpers/getTotalsToPay';
 import { themeApp } from '../../themeApp/themeApp';
 import {ModalItemForSummary} from './ModalItemForSummary';
 import {CardForCheckOutSubmit} from './CardForCheckOutSubmit';
-import { useNavigation } from '@react-navigation/native';
 
-export const ModalCartForSummary = (setTotales) => {
+export const ModalCartForSummary = () => {
 
-	const [showCard, setShowCard] = useState(false)
-	const navigationn = useNavigation();
 	const {cartState} = useContext(CartContext);
 	const { products } = cartState;
 
@@ -20,7 +16,6 @@ export const ModalCartForSummary = (setTotales) => {
 	const VAT = totals * 0.05;
 	const shipping = totals * 0.2;
 	const grandTotal = totals + shipping;
-	const theCartHaveProducts = (products.length > 0);
 
 
 	
@@ -28,15 +23,10 @@ export const ModalCartForSummary = (setTotales) => {
 
 	return (
 		<View style={{
-			// height: HEIGHT * .8  ,
-			// width: WIDTH* .7 ,
-			// backgroundColor: 'rgba(0,0,0,.3)',
+
 			justifyContent: 'center',
 			alignItems: 'center',
-			// marginTop: 20,
-			// marginLeft:  WIDTH* .15 ,
-			// backgroundColor: '#F7F7F7',
-			// borderWidth: 2, borderColor: 'red'
+
 		}}>
 				<View style={{
 					width: 300,
@@ -81,17 +71,8 @@ export const ModalCartForSummary = (setTotales) => {
 						<Text style={{ color: '#A3A3A3', fontSize: 20 , fontWeight: "bold"}}>GRAND TOTAL</Text>
 						<Text style={{ color: themeApp.colorPrimary, marginLeft: 15, fontSize: 20, fontWeight: '800' }}>{convertToCurrency(grandTotal)}</Text>
 					</View>
-
-					{/* <TouchableOpacity
-						disabled={!theCartHaveProducts}
-						style= {style.buttonCheckoutAble }
-						onPress= {() => setShowCard(true)}
-					>
-						<Text style= {style.TextFinal}>CONTINUE AND PAY</Text>
-					</TouchableOpacity> */}
-
 				</View>
-				<CardForCheckOutSubmit show= {showCard} setShowCard= {setShowCard}/>
+				<CardForCheckOutSubmit grandTotal={grandTotal}/>
 			</View>
 	)
 }

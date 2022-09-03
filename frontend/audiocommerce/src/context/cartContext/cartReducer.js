@@ -42,6 +42,11 @@ export const cartReducer = (state, action) => {
                 ...state,
                 products: []
             }
+        case 'setShowOrderCreated':
+            return {
+                ...state,
+                showOrderCreated: action.payload
+            }
         default:
             return {
                 ...state

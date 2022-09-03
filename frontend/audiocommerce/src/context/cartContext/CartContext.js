@@ -12,6 +12,7 @@ export const CartProvider = ({ children })=>{
 
     const [ cartState , dispatch] = useReducer(cartReducer, {
         products:[],
+        showOrderCreated: false
     });
 
     const removeProductToCart = (id) =>{
@@ -69,13 +70,13 @@ export const CartProvider = ({ children })=>{
                     }
                 })
             }
-            // const order = JSON.stringify(orderData);
-            console.log(order)
+
             try {
                 
                 const {data} = await apiDB.post('/orders', order );
+
+                setShowOrderCreated(true)
     
-                console.log('data cash', JSON.stringify(data, null, 2))
             } catch (error) {
     
                 console.log('error', JSON.stringify(error.response, null, 2))
@@ -91,14 +92,13 @@ export const CartProvider = ({ children })=>{
                         amount: item.amount
                     }
                 })
-            }
-            // const order = JSON.stringify(orderData);
-            console.log('order', JSON.stringify(order, null, 2))
+           }
+
             try {
                 
                 const { data } = await apiDB.post('/orders', order );
     
-                console.log('data', JSON.stringify(data, null, 2))
+                setShowOrderCreated(true)
             } catch (error) {
     
                 console.log('error', JSON.stringify(error.response.data.error, null, 2))
@@ -108,6 +108,13 @@ export const CartProvider = ({ children })=>{
 
 
     }
+
+    const setShowOrderCreated= ( value )=>{
+        dispatch({
+            type: 'setShowOrderCreated',
+            payload: value
+        })
+    }
     return(
         <CartContext.Provider
             value={{
@@ -116,7 +123,8 @@ export const CartProvider = ({ children })=>{
                 removeProductToCart,
                 changeAmountItems,
                 removeAllItems,
-                createOrder
+                createOrder,
+                setShowOrderCreated
             }}
         >
             {children}

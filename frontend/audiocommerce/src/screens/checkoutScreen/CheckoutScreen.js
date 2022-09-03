@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, ErrorMessage } from 'formik'
 import { Text, ScrollView, View, StyleSheet, TextInput, TouchableOpacity } from "react-native"
 import { FooterScreen } from '../footerScreen/FooterScreen.js'
 import { themeApp } from '../../themeApp/themeApp'
@@ -42,7 +42,6 @@ export const CheckoutScreen = ({ navigation }) => {
 		})
 	}, [products])
 
-	console.log('totales', totales);
 
 	const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 	return (
@@ -54,13 +53,13 @@ export const CheckoutScreen = ({ navigation }) => {
 					<View style={styles.billing}>
 						<Formik
 							initialValues={{
-								name: 'Abel Amieva',
-								email: 'abelamieva@gmail.com',
-								phoneNumber: '123456789',
-								address: 'algomas',
-								zipCode: '132321',
-								city: 'cordoba',
-								country: 'argentina',
+								name: '',
+								email: '',
+								phoneNumber: '',
+								address: '',
+								zipCode: '',
+								city: '',
+								country: '',
 								paymentMethod: 'cash',
 								eMoneyNumber: 4242424242424242,
 								eMoneyPin: 0,
