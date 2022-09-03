@@ -65,7 +65,7 @@ console.log(totales)
 									...values,
 									...totales
 								}
-								createOrder(values);
+								createOrder(userOrder);
 							}}
 						>
 
