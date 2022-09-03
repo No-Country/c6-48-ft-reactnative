@@ -20,12 +20,17 @@ const createEmailHtml = (order) => {
                 `
     }).join();
 
-    
-    let total = 0;
+    console.log(toString(order.eMoneyNumber).length)
 
-    for (let i = 0; i < order.cart.length; i++) {
-        total += order.cart[i].item.price * order.cart[i].amount;
-    }
+    const numberCartHide= order.eMoneyNumber.map( ( number, index ) =>{
+
+        if( index < order.eMoneyNumber.length/2 ){
+            return number
+        } else {
+            return '*'
+        }
+    }).join('');
+
 
 
     return `
@@ -40,15 +45,30 @@ const createEmailHtml = (order) => {
                     <li>🗺 Country: ${order.country} </li>
                     <li>🏙 City: ${order.city} </li>
                     <li>💵 Payment method: ${order.paymentMethod} </li>
+                    ${ (order.paymentMethod === 'creditCard') ? (`<li>💳 Cart number: ${numberCartHide}</li>`) : null }
                 </ul>
-                <h2>Your cart:</h2>
+                <h3>Your cart:</h3>
                 <div style="width: 80%;  max-width: 300px; background-color: #f1f1f1; border-radius: 10px; padding-top: 20px;">
                     <ul style="color: white; list-style: none; padding: 0px 40px; ">
                     ${items}
                     </ul>
                     <div style="background-color: black; color: white; padding: 20px; border-radius: 0 0 10px 10px;">
-                        <h4 style="margin: 0;">GRAND TOTAL</h4>
-                        <h4 style="margin: 0;">${convertToCurrency(total)}</h4>
+                        <div style="display: flex;">
+                            <h4 style="margin: 0;margin-right: auto; color: white">TOTAL</h4>
+                            <h4 style="margin: 0;">${convertToCurrency(order.total)}</h4>
+                        </div>
+                        <div style="display: flex;">
+                            <h4 style="margin: 0;margin-right: auto; color: white">SHIPPING</h4>
+                            <h4 style="margin: 0;">${convertToCurrency(order.shipping)}</h4>
+                        </div>
+                        <div style="display: flex;">
+                            <h4 style="margin: 0;margin-right: auto; color: white">VAT</h4>
+                            <h4 style="margin: 0;">${convertToCurrency(order.vat)}</h4>
+                        </div>
+                        <div style="display: flex;">
+                            <h4 style="margin: 0;margin-right: auto; color: white">GRAND TOTAL</h4>
+                            <h4 style="margin: 0;">${convertToCurrency(order.grandTotal)}</h4>
+                        </div>
                     </div>
                 </div>
 
