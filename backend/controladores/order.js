@@ -65,7 +65,8 @@ const postOrder = async (req, res) => {
 
         res.status(200).json({
             msg: 'order emails send',
-            id: info.messageId
+            idOrder: order._id,
+            idEmail: info.messageId,
         })
 
 
