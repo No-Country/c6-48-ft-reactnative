@@ -9,37 +9,38 @@ import {ModalItemForSummary} from './ModalItemForSummary';
 import {CardForCheckOutSubmit} from './CardForCheckOutSubmit';
 import { useNavigation } from '@react-navigation/native';
 
-export const ModalCartForSummary = (setShowCart) => {
+export const ModalCartForSummary = (setTotales) => {
 
 	const [showCard, setShowCard] = useState(false)
 	const navigationn = useNavigation();
-	const {cartState, removeAllItems } = useContext(CartContext);
+	const {cartState} = useContext(CartContext);
 	const { products } = cartState;
 
 	const totals = useMemo(()=>  getTotalsToPay(products), [ products ]);
 	const VAT = totals * 0.05;
 	const shipping = totals * 0.2;
 	const grandTotal = totals + shipping;
-	const HEIGHT  = useWindowDimensions().height ;
-	const WIDTH = useWindowDimensions().width ;
 	const theCartHaveProducts = (products.length > 0);
 
+
+	
 	
 
 	return (
 		<View style={{
-			height: HEIGHT * .8  ,
-			width: WIDTH* .7 ,
-			backgroundColor: 'rgba(0,0,0,.3)',
+			// height: HEIGHT * .8  ,
+			// width: WIDTH* .7 ,
+			// backgroundColor: 'rgba(0,0,0,.3)',
 			justifyContent: 'center',
 			alignItems: 'center',
-			marginTop: 20,
-			marginLeft:  WIDTH* .15 ,
-			backgroundColor: '#F7F7F7',
+			// marginTop: 20,
+			// marginLeft:  WIDTH* .15 ,
+			// backgroundColor: '#F7F7F7',
+			// borderWidth: 2, borderColor: 'red'
 		}}>
 				<View style={{
 					width: 300,
-					height: HEIGHT * .8 ,
+					// height: HEIGHT * .8 ,
 					backgroundColor: themeApp.colorWhite,
 					borderRadius: 10,
 					margin:5,
@@ -81,13 +82,13 @@ export const ModalCartForSummary = (setShowCart) => {
 						<Text style={{ color: themeApp.colorPrimary, marginLeft: 15, fontSize: 20, fontWeight: '800' }}>{convertToCurrency(grandTotal)}</Text>
 					</View>
 
-					<TouchableOpacity
+					{/* <TouchableOpacity
 						disabled={!theCartHaveProducts}
 						style= {style.buttonCheckoutAble }
 						onPress= {() => setShowCard(true)}
 					>
 						<Text style= {style.TextFinal}>CONTINUE AND PAY</Text>
-					</TouchableOpacity>
+					</TouchableOpacity> */}
 
 				</View>
 				<CardForCheckOutSubmit show= {showCard} setShowCard= {setShowCard}/>

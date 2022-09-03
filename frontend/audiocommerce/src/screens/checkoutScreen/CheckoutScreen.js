@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Text, ScrollView, View, StyleSheet, TextInput, TouchableOpacity } from "react-native"
 import { FooterScreen } from '../footerScreen/FooterScreen.js'
@@ -8,6 +8,7 @@ import valid from "card-validator";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ModalCartForSummary } from '../../components/modals/ModalCartForSummary.js'
 import { CartContext } from '../../context/cartContext/CartContext.js';
+import { getTotalsToPay } from '../../helpers/getTotalsToPay.js';
 
 
 export const CheckoutScreen = ({ navigation }) => {
@@ -16,13 +17,33 @@ export const CheckoutScreen = ({ navigation }) => {
 
 	const { products } = cartState;
 
+	const totals = useMemo(() => getTotalsToPay(products), [products]);
+	const VAT = totals * 0.05;
+	const shipping = totals * 0.2;
+	const grandTotal = totals + shipping;
+
 	const theCartHaveProducts = (products.length > 0);
 
-	const [state, setState] = useState({ selectedButton: 'button2' , visible: false});
+	const [state, setState] = useState({ selectedButton: 'button2', visible: false });
 
-	const [totales, setTotales] = useState();
+	const [totales, setTotales] = useState({
+		total: 0,
+		shipping: 0,
+		vat: 0,
+		grandTotal: 0
+	});
 
-console.log(totales)
+	useEffect(() => {
+		setTotales({
+			total: totals,
+			shipping,
+			vat: VAT,
+			grandTotal
+		})
+	}, [products])
+
+	console.log('totales', totales);
+
 	const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 	return (
 		<ScrollView>
@@ -56,16 +77,16 @@ console.log(totales)
 									"test-number",
 									"Credit Card number is invalid",
 									value => valid.number(value).isValid
-								  ).notRequired(),
+								).notRequired(),
 								eMoneyPin: Yup.number().typeError('must be a number!')
 							})}
-							onSubmit={( values ) => {
+							onSubmit={(values) => {
 
 								const userOrder = {
 									...values,
 									...totales
 								}
-								createOrder(values);
+								createOrder(userOrder);
 							}}
 						>
 
@@ -177,7 +198,7 @@ console.log(totales)
 									<Text style={styles.text2}>PAYMENT DETAILS</Text>
 									<Text style={styles.miniTitles}>Payment Method</Text>
 									<TouchableOpacity style={{ width: 250, height: 50, borderRadius: 10, borderWidth: 4, marginVertical: 20, marginLeft: 35, borderColor: state.selectedButton === 'button1' ? '#d87d4a' : '#E1DFDF' }}
-										onPress={() =>{ setState({ selectedButton: 'button1', visible: true }); values.paymentMethod='creditCard'}}
+										onPress={() => { setState({ selectedButton: 'button1', visible: true }); values.paymentMethod = 'creditCard' }}
 									>
 										<View style={{ flexDirection: "row", }}>
 											<Icon name='add-circle-outline' style={{ margin: 5, }} size={30} color='#E1DFDF'></Icon>
@@ -187,7 +208,7 @@ console.log(totales)
 
 
 									<TouchableOpacity style={{ width: 250, height: 50, borderRadius: 10, borderWidth: 4, marginVertical: 20, marginLeft: 35, borderColor: state.selectedButton === 'button2' ? '#d87d4a' : '#E1DFDF' }}
-										onPress={() =>{ setState({ selectedButton: 'button2' }); values.paymentMethod = 'cash'}}
+										onPress={() => { setState({ selectedButton: 'button2' }); values.paymentMethod = 'cash' }}
 									>
 										<View style={{ flexDirection: "row", }}>
 											<Icon name='add-circle-outline' style={{ margin: 5, }} size={30} color='#E1DFDF'></Icon>
@@ -226,13 +247,20 @@ console.log(totales)
 										</Text>)
 										}
 									</View> : null}
-
+									<ModalCartForSummary setTotales={setTotales} />
+									<TouchableOpacity
+										disabled={!theCartHaveProducts}
+										style={styles.buttonCheckoutAble}
+										onPress={handleSubmit}
+									>
+										<Text style={styles.TextFinal}>CONTINUE AND PAY</Text>
+									</TouchableOpacity>
 								</View>
 							)}
 						</Formik>
 					</View>
 				</View>
-				<ModalCartForSummary setTotales={setTotales}/>
+
 			</View>
 			<FooterScreen style={styles.foot}{...navigation} />
 		</ScrollView>

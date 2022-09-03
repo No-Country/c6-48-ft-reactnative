@@ -29,10 +29,9 @@ export const ModalItemForSummary = ({ product }) => {
             {/* Item price and title */}
 
             <View style={{
-                width: width *.33,
+                width: width *.30,
                 maxWidth: 155,
-                paddingHorizontal: 15,
-
+                paddingHorizontal: 10,
             }}>
                 <Text
                     style={{ color: themeApp.colorBlack, fontSize: 20 }}
@@ -51,9 +50,10 @@ export const ModalItemForSummary = ({ product }) => {
 
             {/* buttons to add or subtract items*/}
 
-            <View style={{ flexDirection: 'row', flex: 1, height: 40}}>
+            <View style={{ flexDirection: 'row', flex: 1, height: 40,}}>
 
-                <TouchableOpacity
+                    <Text style={{ color: 'black', fontWeight: 'bold'}}>X{product.amount}</Text>
+                {/* <TouchableOpacity
                     onPress={() => setCounter(prev => prev - 1)}
                     style={style.counterButtos}
                     disabled={counter <= 1}
@@ -72,7 +72,7 @@ export const ModalItemForSummary = ({ product }) => {
                     style={style.counterButtos}
                 >
                     <Text>+</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         </View>
     )
