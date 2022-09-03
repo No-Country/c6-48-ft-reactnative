@@ -85,7 +85,7 @@ export const ModalCart = ({show, setShowCart}) => {
 					/>
 
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
-						<Text style={{ color: themeApp.colorGrayDark, fontSize: 20 }}>TOTAL</Text>
+						<Text style={{ color: themeApp.colorGrayDark, fontSize: 20 }}>SUBTOTAL</Text>
 						<Text style={{ color: themeApp.colorBlack, fontSize: 20, fontWeight: '500' }}>{convertToCurrency(totals)}</Text>
 					</View>
 

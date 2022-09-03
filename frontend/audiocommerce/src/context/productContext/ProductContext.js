@@ -107,7 +107,7 @@ export const ProductProvider = ({ children }) => {
 				}
 			});
 			addProducts(data.productos)
-			console.log('hey! se obtubo la data')
+			console.log('Hey! se obtuvieron los productos desde la base de datos')
             setLoading(false)
 		} catch (error) {
 			console.log(error)

@@ -32,7 +32,7 @@ export const HomeScreen = ({ navigation }) => {
 
 			<OrangeCard product={products[6]} screenDetails={'DetailsHome'} />
 
-			<GrayCard product={products[9]} screenDetails={'DetailsHome'} />
+			<GrayCard product={products[14]} screenDetails={'DetailsHome'} />
 			<FooterScreen {...navigation}/>
 
 
